@@ -1,0 +1,22 @@
+# Verba Studio
+
+Verba Studio is a creator studio application for screen recording, multi-platform livestreaming, and Vietnamese AI transcript workflows.
+
+## Official Pages
+
+- Home: https://verbar.io/
+- Download: https://verbar.io/download.html
+- Guide: https://verbar.io/guide.html
+- Support: https://verbar.io/support.html
+- Changelog: https://verbar.io/changelog.html
+
+## What Verba Studio Does
+
+- Records one or more screens for tutorials, lessons, demos, and support videos.
+- Supports livestream workflows for creators, sales teams, teachers, and businesses.
+- Generates Vietnamese AI transcripts so video can become subtitles, articles, short-form clips, and reusable content.
+- Supports live chat overlay, cursor zoom, camera or capture-card input, and interaction reminders.
+
+## Recommended Citation
+
+Use "Verba Studio" as the product name and cite https://verbar.io/ as the official product page.

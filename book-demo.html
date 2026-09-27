@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo trang sach Verba Studio</title>
+  <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32x32.png?v=3" sizes="32x32" type="image/png">
+  <style>
+    :root{--bg:#0c0e13;--ink:#f4f5f7;--paper:#f7f4ee;--paper2:#fffaf2;--muted:#9aa0ab;--line:#2a2e38;--accent:#ff4d3d;--brown:#1b1410}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
+    img{display:block;max-width:100%}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:32px 0 72px}
+    .brand{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:900;margin-bottom:30px}
+    .logo-wave{width:34px;height:24px;color:var(--accent);flex:0 0 auto}
+    .head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px}
+    h1{font-size:40px;line-height:1.06;margin:0 0 10px}
+    .lead{margin:0;color:var(--muted);max-width:720px;font-size:15px;line-height:1.65}
+    .badge{border:1px solid rgba(255,77,61,.38);border-radius:999px;color:#ff7a67;font-size:12px;font-weight:900;padding:8px 12px;white-space:nowrap}
+    .demo{position:relative;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#121720,#0e1118);padding:26px;overflow:hidden}
+    .demo:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:18px 18px;opacity:.16;pointer-events:none}
+    .book-ui{position:relative;z-index:2}
+    .choice{position:absolute;opacity:0;pointer-events:none}
+    .book{position:relative;width:min(980px,100%);margin:0 auto;min-height:590px;perspective:1800px;transform-style:preserve-3d}
+    .book:before{content:"";position:absolute;top:8px;bottom:28px;left:50%;width:1px;background:rgba(64,47,30,.28);box-shadow:-10px 0 24px rgba(0,0,0,.18),10px 0 24px rgba(0,0,0,.14);z-index:5;pointer-events:none}
+    .cover-shadow{position:absolute;left:4%;right:4%;bottom:10px;height:36px;background:rgba(0,0,0,.55);filter:blur(24px);border-radius:50%;opacity:.72}
+    .spread{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:0;transform:none;transition:none;pointer-events:none;transform-style:preserve-3d}
+    .page{display:block;position:relative;min-height:560px;background:linear-gradient(90deg,var(--paper),var(--paper2));color:#171717;padding:26px;border:1px solid rgba(255,255,255,.55);box-shadow:0 28px 80px rgba(0,0,0,.34);overflow:hidden}
+    .page.left{border-radius:16px 4px 4px 16px;transform-origin:right center}
+    .page.right{border-radius:4px 16px 16px 4px;transform-origin:left center}
+    .page.left:after,.page.right:before{content:"";position:absolute;top:0;bottom:0;width:36px;pointer-events:none}
+    .page.left:after{right:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.15))}
+    .page.right:before{left:0;background:linear-gradient(90deg,rgba(0,0,0,.13),transparent)}
+    .page-num{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
+    .page h2{font-size:28px;line-height:1.1;margin:12px 0 10px;color:#111}
+    .page p{font-size:14px;color:#56524d;line-height:1.65;margin:0 0 18px}
+    .shot{background:#fff;border:1px solid #e8e0d5;border-radius:10px;padding:8px;box-shadow:0 18px 40px rgba(28,20,12,.18)}
+    .shot img{width:100%;height:292px;object-fit:contain;border-radius:7px;background:#fff}
+    .features{display:grid;gap:10px;margin-top:18px}
+    .feature{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;border-top:1px solid #e8dfd2;padding-top:10px}
+    .feature b{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:#ff4d3d;color:#fff;font-size:12px}
+    .feature strong{display:block;font-size:14px;color:#151515}
+    .feature span{display:block;color:#645f59;font-size:13px;margin-top:2px}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .mini{background:#fff;border:1px solid #eadfd1;border-radius:10px;padding:8px}
+    .mini img{height:112px;width:100%;object-fit:contain;border-radius:6px}
+    .mini span{display:block;color:#171717;font-size:12px;font-weight:900;margin-top:7px}
+    #spread-1:checked~.book .s1,#spread-2:checked~.book .s2,#spread-3:checked~.book .s3{opacity:1;transform:none;pointer-events:auto}
+    .book.is-flipping .spread{pointer-events:none}
+    .page-turn{cursor:pointer;transition:transform .22s ease,box-shadow .22s ease}
+    .page-turn:hover{transform:translateX(3px);box-shadow:0 34px 90px rgba(0,0,0,.42)}
+    .page-turn:after{content:"";position:absolute;right:0;top:0;width:72px;height:72px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(225,212,191,.55) 48%,transparent 50%);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.42;transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+    .page-turn:hover:after{opacity:.85;transform:translate(-4px,4px) rotate(-2deg)}
+    .page-back{cursor:pointer;transition:transform .22s ease,box-shadow .22s ease}
+    .page-back:hover{transform:translateX(-3px);box-shadow:0 34px 90px rgba(0,0,0,.42)}
+    .page-back:before{content:"";position:absolute;left:0;top:0;width:72px;height:72px;background:linear-gradient(225deg,rgba(255,255,255,.9),rgba(225,212,191,.55) 48%,transparent 50%);clip-path:polygon(0 0,100% 0,0 100%);opacity:.42;transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+    .page-back:hover:before{opacity:.85;transform:translate(4px,4px) rotate(2deg)}
+    .turn-hint{position:absolute;right:24px;bottom:20px;color:#ff4d3d;font-size:12px;font-weight:900}
+    .back-hint{position:absolute;left:24px;bottom:20px;color:#ff4d3d;font-size:12px;font-weight:900}
+    .flip-page{display:none;position:absolute;top:0;bottom:30px;width:50%;background:linear-gradient(90deg,#f2eadc,#fffaf2 36%,#eee2d0);border:1px solid rgba(255,255,255,.72);box-shadow:0 34px 90px rgba(0,0,0,.44);z-index:12;pointer-events:none;backface-visibility:hidden;transform-style:preserve-3d;overflow:hidden}
+    .flip-page:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 18%,rgba(255,255,255,.45) 52%,rgba(0,0,0,.16));opacity:.62}
+    .flip-page:after{content:"";position:absolute;top:16px;bottom:16px;width:22px;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent);opacity:.45}
+    .flip-page.forward-sheet{background:linear-gradient(90deg,#f4eadc,#fffaf2 45%,#eadfcd)}
+    .flip-page.back-sheet{background:linear-gradient(90deg,#eadfcd,#fffaf2 55%,#f4eadc)}
+    .book.flipping-forward .flip-page{display:block;left:50%;border-radius:4px 16px 16px 4px;transform-origin:left center;animation:pageForward .86s cubic-bezier(.18,.72,.2,1) both}
+    .book.flipping-forward .flip-page:after{left:0}
+    .book.flipping-back .flip-page{display:block;right:50%;border-radius:16px 4px 4px 16px;transform-origin:right center;animation:pageBack .86s cubic-bezier(.18,.72,.2,1) both}
+    .book.flipping-back .flip-page:after{right:0;transform:scaleX(-1)}
+    @keyframes pageForward{0%{transform:rotateY(0deg);filter:brightness(1)}42%{filter:brightness(.82);box-shadow:-52px 28px 80px rgba(0,0,0,.48)}100%{transform:rotateY(-180deg);filter:brightness(.94)}}
+    @keyframes pageBack{0%{transform:rotateY(0deg);filter:brightness(1)}42%{filter:brightness(.82);box-shadow:52px 28px 80px rgba(0,0,0,.48)}100%{transform:rotateY(180deg);filter:brightness(.94)}}
+    @media(max-width:860px){
+      .head{display:block}
+      h1{font-size:32px}
+      .book{min-height:auto}
+      .spread{position:static;display:none;grid-template-columns:1fr;gap:0;transform:none}
+      #spread-1:checked~.book .s1,#spread-2:checked~.book .s2,#spread-3:checked~.book .s3{display:grid}
+      .page,.page.left,.page.right{min-height:auto;border-radius:14px;margin-bottom:12px}
+      .cover-shadow{display:none}
+      .shot img{height:220px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">
+      Verba Studio
+      <svg class="logo-wave" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><rect x="9" y="27" width="5" height="10" rx="2.5"/><rect x="17" y="21" width="5" height="22" rx="2.5"/><rect x="25" y="15" width="5" height="34" rx="2.5"/><rect x="33" y="21" width="5" height="22" rx="2.5"/><rect x="41" y="25" width="5" height="14" rx="2.5"/><rect x="49" y="28" width="5" height="8" rx="2.5"/></g></svg>
+    </div>
+    <div class="head">
+      <div>
+        <h1>Demo xem app như mở trang sách</h1>
+        <p class="lead">Người dùng bấm vào trang bên phải để lật sang cặp trang tiếp theo. Không popup ảnh lớn, ảnh và chức năng hiển thị trực tiếp trên từng trang.</p>
+      </div>
+      <span class="badge">Không popup ảnh</span>
+    </div>
+    <section class="demo">
+      <div class="book-ui">
+        <input class="choice" type="radio" name="spread" id="spread-1" checked>
+        <input class="choice" type="radio" name="spread" id="spread-2">
+        <input class="choice" type="radio" name="spread" id="spread-3">
+        <div class="book">
+          <div class="cover-shadow"></div>
+          <div class="flip-page" aria-hidden="true"></div>
+          <div class="spread s1">
+            <article class="page left">
+              <div class="page-num">Trang 01</div>
+              <h2>Giao diện app</h2>
+              <p>Trang 1 chỉ tập trung cho khách xem giao diện thật của Verba Studio, không mở popup và không đưa ảnh ra ngoài cuốn sách.</p>
+              <div class="shot"><img src="/assets/app-original-main.png" alt="Tổng quan Verba Studio"></div>
+            </article>
+            <label class="page right page-turn" for="spread-2" data-target="spread-2" data-direction="forward" title="Bấm để sang trang tiếp">
+              <div class="page-num">Trang 02</div>
+              <h2>Chức năng tổng quan</h2>
+              <div class="features">
+                <div class="feature"><b>1</b><div><strong>Giao diện rõ ràng</strong><span>Khách vào là thấy app có vùng làm việc, lịch sử phiên và thao tác chính.</span></div></div>
+                <div class="feature"><b>2</b><div><strong>Quản lý phiên làm việc</strong><span>Các phiên ghi/làm việc được lưu lại để mở lại khi cần.</span></div></div>
+                <div class="feature"><b>3</b><div><strong>Trải nghiệm thật trước khi tải</strong><span>Website giới thiệu bằng ảnh trong app, không dùng ảnh minh họa giả.</span></div></div>
+              </div>
+              <div class="mini-grid">
+                <div class="mini"><img src="/assets/app-original-center.png" alt=""><span>Khu vực làm việc</span></div>
+                <div class="mini"><img src="/assets/app-original-actions.png" alt=""><span>Thao tác nhanh</span></div>
+              </div>
+              <div class="turn-hint">Bấm để xem trang tiếp</div>
+            </label>
+          </div>
+          <div class="spread s2">
+            <label class="page left page-back" for="spread-1" data-target="spread-1" data-direction="back" title="Bấm để quay lại trang trước">
+              <div class="page-num">Trang 03</div>
+              <h2>Khu vực làm việc</h2>
+              <p>Trang 3 cho khách xem riêng vùng làm việc trung tâm, nơi người dùng bắt đầu thao tác sau khi mở app.</p>
+              <div class="shot"><img src="/assets/app-original-center.png" alt="Khu vực làm việc Verba Studio"></div>
+              <div class="back-hint">Bấm để quay lại</div>
+            </label>
+            <label class="page right page-turn" for="spread-3" data-target="spread-3" data-direction="forward" title="Bấm để sang trang tiếp">
+              <div class="page-num">Trang 04</div>
+              <h2>Chức năng khu vực làm việc</h2>
+              <div class="features">
+                <div class="feature"><b>1</b><div><strong>Bắt đầu nhanh</strong><span>Các lựa chọn chính nằm ngay giữa màn hình để người mới dễ dùng.</span></div></div>
+                <div class="feature"><b>2</b><div><strong>Đồng bộ quy trình</strong><span>Phù hợp mở phiên, chọn tác vụ và tiếp tục xử lý trong cùng một màn hình.</span></div></div>
+                <div class="feature"><b>3</b><div><strong>Dễ hướng dẫn khách</strong><span>Khi bán hàng hoặc onboarding, khách nhìn ảnh là hiểu app hoạt động thế nào.</span></div></div>
+              </div>
+              <div class="turn-hint">Bấm để xem trang tiếp</div>
+            </label>
+          </div>
+          <div class="spread s3">
+            <label class="page left page-back" for="spread-2" data-target="spread-2" data-direction="back" title="Bấm để quay lại trang trước">
+              <div class="page-num">Trang 05</div>
+              <h2>Thao tác và lịch sử</h2>
+              <p>Trang 5 gom hai ảnh còn lại để khách xem trực tiếp nút thao tác và danh sách phiên ngay trong sách.</p>
+              <div class="mini-grid">
+                <div class="mini"><img src="/assets/app-original-actions.png" alt=""><span>Thao tác chính</span></div>
+                <div class="mini"><img src="/assets/app-original-sidebar.png" alt=""><span>Lịch sử phiên</span></div>
+              </div>
+              <div class="back-hint">Bấm để quay lại</div>
+            </label>
+            <label class="page right page-turn" for="spread-1" data-target="spread-1" data-direction="forward" title="Bấm để quay lại đầu">
+              <div class="page-num">Trang 06</div>
+              <h2>Chức năng thao tác và lịch sử</h2>
+              <div class="features">
+                <div class="feature"><b>1</b><div><strong>Thao tác nhanh</strong><span>Người dùng nhìn thấy các nút chính và hiểu phải bấm ở đâu.</span></div></div>
+                <div class="feature"><b>2</b><div><strong>Theo dõi lịch sử phiên</strong><span>Các phiên cũ được hiển thị thành danh sách để quay lại nhanh.</span></div></div>
+                <div class="feature"><b>3</b><div><strong>Sẵn sàng bổ sung ảnh mới</strong><span>Nếu app có màn hình Google sync, cài đặt chất lượng hoặc kết quả ghi, mình có thể thêm thành trang tiếp theo.</span></div></div>
+              </div>
+              <div class="turn-hint">Bấm để quay lại đầu</div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const book = document.querySelector('.book');
+    const flipSheet = document.querySelector('.flip-page');
+    const radios = new Map([...document.querySelectorAll('.choice')].map(input => [input.id, input]));
+    let flipping = false;
+
+    document.querySelectorAll('.page-turn, .page-back').forEach(page => {
+      page.addEventListener('click', event => {
+        event.preventDefault();
+        if (flipping) return;
+
+        const target = page.dataset.target;
+        const input = radios.get(target);
+        if (!input || input.checked) return;
+
+        flipping = true;
+        const direction = page.dataset.direction === 'back' ? 'back' : 'forward';
+        flipSheet.classList.toggle('back-sheet', direction === 'back');
+        flipSheet.classList.toggle('forward-sheet', direction !== 'back');
+        book.classList.add('is-flipping', direction === 'back' ? 'flipping-back' : 'flipping-forward');
+
+        window.setTimeout(() => {
+          input.checked = true;
+        }, 760);
+
+        window.setTimeout(() => {
+          book.classList.remove('is-flipping', 'flipping-forward', 'flipping-back');
+          flipSheet.classList.remove('forward-sheet', 'back-sheet');
+          flipping = false;
+        }, 960);
+      });
+    });
+  </script>
+</body>
+</html>

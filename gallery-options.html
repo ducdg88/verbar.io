@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chon mau anh app cao cap - Verba Studio</title>
+  <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32x32.png?v=3" sizes="32x32" type="image/png">
+  <style>
+    :root{--bg:#0c0e13;--ink:#f4f5f7;--muted:#9ca3af;--line:#242833;--panel:#131721;--accent:#ff4d3d;--gold:#f6b84b;--cyan:#37c6d0;--green:#5dd38a}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.55}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 78px}
+    .top{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:38px}
+    .brand{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900}
+    .brand .logo-wave{width:20px;height:16px;color:var(--accent);flex:0 0 auto}
+    h1{font-size:38px;line-height:1.08;margin:18px 0 10px;letter-spacing:0}
+    .lead{color:var(--muted);max-width:730px;margin:0;font-size:15px}
+    .badge{display:inline-flex;align-items:center;border:1px solid rgba(255,77,61,.45);border-radius:999px;color:#ff7a67;font-size:12px;font-weight:900;padding:7px 12px;white-space:nowrap}
+    .option{border-top:1px solid var(--line);padding:42px 0}
+    .option-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:20px}
+    h2{margin:0;font-size:26px;line-height:1.12}
+    .option-head p{margin:7px 0 0;color:var(--muted);font-size:14px;max-width:720px}
+    .mark{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+    .shot{background:#f7f8fb;border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 70px rgba(0,0,0,.34)}
+    .open{display:inline-flex;align-items:center;justify-content:center;min-height:36px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:900;padding:8px 13px}
+    .subtle{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink)}
+
+    /* 1 Premium stage */
+    .stage-premium{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:22px;align-items:stretch}
+    .hero-shot{position:relative;min-height:550px;padding:20px;background:linear-gradient(135deg,#10141d,#151823 48%,#11151b);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .hero-shot:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,77,61,.13),transparent 34%,rgba(55,198,208,.11));pointer-events:none}
+    .hero-shot img{position:relative;max-height:650px;width:auto;border-radius:7px}
+    .side-stack{display:grid;gap:12px;align-content:stretch}
+    .side-card{display:grid;grid-template-columns:88px 1fr;gap:12px;align-items:center;min-height:120px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px;text-decoration:none}
+    .side-card img{height:76px;width:88px;object-fit:contain;border-radius:5px}
+    .side-card strong{display:block;font-size:14px}
+    .side-card span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+
+    /* 2 Product wall */
+    .product-wall{position:relative;min-height:620px;border:1px solid var(--line);border-radius:16px;background:#11151d;overflow:hidden;padding:34px}
+    .wall-main{position:absolute;left:32px;right:300px;top:34px;bottom:34px;display:flex;align-items:center;justify-content:center}
+    .wall-main img{max-height:100%;border-radius:7px}
+    .floating{position:absolute;width:260px;background:#f7f8fb;border-radius:8px;box-shadow:0 28px 80px rgba(0,0,0,.45);padding:6px}
+    .floating img{border-radius:5px}
+    .float-a{right:34px;top:50px}
+    .float-b{right:92px;bottom:54px}
+    .wall-label{position:absolute;left:34px;bottom:30px;background:rgba(12,14,19,.82);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:9px 13px;font-size:13px;font-weight:900}
+
+    /* 3 Feature board */
+    .board{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .board-main{min-height:500px;background:#10141c;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;align-items:center;justify-content:center}
+    .board-main img{max-height:590px;border-radius:7px}
+    .board-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .feature-tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px;text-decoration:none;display:flex;flex-direction:column;gap:10px;min-height:214px}
+    .feature-tile img{height:122px;width:100%;object-fit:contain;border-radius:5px}
+    .feature-tile b{font-size:14px}
+    .feature-tile small{color:var(--muted);font-size:12px}
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:7px;background:var(--green)}
+
+    /* 4 Horizontal showroom */
+    .showroom{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .show-card{background:#10141c;border:1px solid var(--line);border-radius:12px;padding:13px;text-decoration:none;min-height:390px;display:flex;flex-direction:column;justify-content:space-between}
+    .show-card:nth-child(2){margin-top:30px}.show-card:nth-child(3){margin-top:60px}.show-card:nth-child(4){margin-top:20px}
+    .show-card img{height:270px;width:100%;object-fit:contain;border-radius:6px}
+    .show-card strong{font-size:15px;margin-top:12px}
+    .show-card span{color:var(--muted);font-size:12px;margin-top:3px}
+
+    /* 5 Minimal selector */
+    .selector{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:stretch}
+    .select-list{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:8px;align-content:start}
+    .select-list a{display:flex;align-items:center;gap:12px;border-radius:8px;padding:10px;text-decoration:none}
+    .select-list a:first-child{background:rgba(255,77,61,.1);outline:1px solid rgba(255,77,61,.3)}
+    .select-list img{width:74px;height:54px;object-fit:contain;border-radius:5px}
+    .select-list strong{display:block;font-size:14px}
+    .select-list span{display:block;color:var(--muted);font-size:12px}
+    .select-stage{min-height:540px;background:#10141c;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;align-items:center;justify-content:center}
+    .select-stage img{max-height:640px;border-radius:7px}
+
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.91);z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+    .lightbox:target{display:flex}
+    .lightbox figure{margin:0;width:min(1180px,96vw)}
+    .lightbox img{width:100%;max-height:86vh;object-fit:contain;background:#f7f8fb;border-radius:8px}
+    .lightbox figcaption{text-align:center;margin-top:10px;color:#fff;font-size:14px}
+    .close{position:fixed;right:22px;top:18px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);border-radius:999px;color:#fff;text-decoration:none;font-weight:900;padding:9px 13px}
+    @media(max-width:900px){
+      .top,.option-head{display:block}
+      h1{font-size:31px}
+      .stage-premium,.board,.selector{grid-template-columns:1fr}
+      .product-wall{min-height:auto;display:grid;gap:12px}
+      .wall-main,.floating,.wall-label{position:static;width:auto}
+      .wall-main{display:block}.wall-main img{width:100%}
+      .showroom{grid-template-columns:1fr 1fr}
+      .show-card:nth-child(n){margin-top:0}
+    }
+    @media(max-width:620px){
+      .showroom,.board-list{grid-template-columns:1fr}
+      .hero-shot,.select-stage{min-height:330px}
+      .side-card{grid-template-columns:78px 1fr}
+      .side-card img{width:78px;height:64px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <div class="brand">
+          Verba Studio
+          <svg class="logo-wave" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><rect x="9" y="27" width="5" height="10" rx="2.5"/><rect x="17" y="21" width="5" height="22" rx="2.5"/><rect x="25" y="15" width="5" height="34" rx="2.5"/><rect x="33" y="21" width="5" height="22" rx="2.5"/><rect x="41" y="25" width="5" height="14" rx="2.5"/><rect x="49" y="28" width="5" height="8" rx="2.5"/></g></svg>
+        </div>
+        <h1>5 hướng hiển thị ảnh app chuyên nghiệp hơn</h1>
+        <p class="lead">Các mẫu này giữ đúng ảnh app gốc, bỏ slider tự chạy và giảm cảm giác “khung trong khung”. Bạn chốt số nào, mình thay đúng mẫu đó vào trang chính.</p>
+      </div>
+      <span class="badge">Preview HTML</span>
+    </header>
+
+    <section class="option">
+      <div class="option-head">
+        <div><h2>1. Product Stage</h2><p>Một ảnh app lớn làm trung tâm, các màn hình phụ nằm thành danh sách bên cạnh. Trông giống phần showcase sản phẩm thật.</p></div>
+        <span class="mark">cao cấp, dễ bán</span>
+      </div>
+      <div class="stage-premium">
+        <a class="hero-shot" href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt="Giao diện chính Verba Studio"></a>
+        <div class="side-stack">
+          <a class="side-card" href="#full-center"><img class="shot" src="/assets/app-original-center.png" alt=""><div><strong>Khu vực làm việc</strong><span>Xem vùng xử lý chính</span></div></a>
+          <a class="side-card" href="#full-actions"><img class="shot" src="/assets/app-original-actions.png" alt=""><div><strong>Thao tác nhanh</strong><span>Các nút quan trọng</span></div></a>
+          <a class="side-card" href="#full-sidebar"><img class="shot" src="/assets/app-original-sidebar.png" alt=""><div><strong>Lịch sử phiên</strong><span>Quản lý phiên đã ghi</span></div></a>
+          <a class="open subtle" href="#full-main">Mở ảnh lớn</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="option">
+      <div class="option-head">
+        <div><h2>2. Floating Product Wall</h2><p>Ảnh app chính lớn, vài màn hình nổi nhẹ như lớp sản phẩm. Có cảm giác PR hơn nhưng vẫn không dùng ảnh bối cảnh ngoài.</p></div>
+        <span class="mark">ấn tượng nhất</span>
+      </div>
+      <a class="product-wall" href="#full-main">
+        <div class="wall-main"><img class="shot" src="/assets/app-original-main.png" alt="Giao diện chính Verba Studio"></div>
+        <div class="floating float-a"><img src="/assets/app-original-actions.png" alt=""></div>
+        <div class="floating float-b"><img src="/assets/app-original-center.png" alt=""></div>
+        <div class="wall-label">Ảnh giao diện thật trong Verba Studio</div>
+      </a>
+    </section>
+
+    <section class="option">
+      <div class="option-head">
+        <div><h2>3. Feature Board</h2><p>Ảnh chính bên trái, bên phải là các module chức năng. Hợp với website đang bán tính năng rõ ràng.</p></div>
+        <span class="mark">rõ tính năng</span>
+      </div>
+      <div class="board">
+        <a class="board-main" href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt="Tổng quan app"></a>
+        <div class="board-list">
+          <a class="feature-tile" href="#full-center"><img class="shot" src="/assets/app-original-center.png" alt=""><b><i class="dot"></i>Workspace</b><small>Khu vực thao tác chính của app.</small></a>
+          <a class="feature-tile" href="#full-actions"><img class="shot" src="/assets/app-original-actions.png" alt=""><b><i class="dot" style="background:var(--gold)"></i>Quick actions</b><small>Các thao tác cần bấm nhanh.</small></a>
+          <a class="feature-tile" href="#full-sidebar"><img class="shot" src="/assets/app-original-sidebar.png" alt=""><b><i class="dot" style="background:var(--cyan)"></i>Session history</b><small>Danh sách phiên làm việc.</small></a>
+          <a class="feature-tile" href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt=""><b><i class="dot" style="background:var(--accent)"></i>Full interface</b><small>Toàn cảnh giao diện thật.</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="option">
+      <div class="option-head">
+        <div><h2>4. Editorial Showroom</h2><p>Bốn ảnh xếp dạng showroom có nhịp, không cần slide. Nhìn gọn nhưng vẫn có chất trình bày sản phẩm.</p></div>
+        <span class="mark">sang, ít chữ</span>
+      </div>
+      <div class="showroom">
+        <a class="show-card" href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt=""><strong>Tổng quan app</strong><span>Toàn bộ giao diện</span></a>
+        <a class="show-card" href="#full-center"><img class="shot" src="/assets/app-original-center.png" alt=""><strong>Khu vực làm việc</strong><span>Không gian thao tác</span></a>
+        <a class="show-card" href="#full-actions"><img class="shot" src="/assets/app-original-actions.png" alt=""><strong>Thao tác chính</strong><span>Nút điều khiển</span></a>
+        <a class="show-card" href="#full-sidebar"><img class="shot" src="/assets/app-original-sidebar.png" alt=""><strong>Lịch sử phiên</strong><span>Quản lý phiên</span></a>
+      </div>
+    </section>
+
+    <section class="option">
+      <div class="option-head">
+        <div><h2>5. Minimal Inspector</h2><p>Giao diện giống một phần “inspect product”: bên trái chọn màn hình, bên phải xem ảnh lớn. Gọn, hiện đại, dễ thay vào trang cũ.</p></div>
+        <span class="mark">thực dụng, sạch</span>
+      </div>
+      <div class="selector">
+        <div class="select-list">
+          <a href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt=""><div><strong>Tổng quan app</strong><span>Ảnh chính nên đặt mặc định</span></div></a>
+          <a href="#full-center"><img class="shot" src="/assets/app-original-center.png" alt=""><div><strong>Khu vực làm việc</strong><span>Mở ảnh lớn khi bấm</span></div></a>
+          <a href="#full-actions"><img class="shot" src="/assets/app-original-actions.png" alt=""><div><strong>Thao tác chính</strong><span>Mở ảnh lớn khi bấm</span></div></a>
+          <a href="#full-sidebar"><img class="shot" src="/assets/app-original-sidebar.png" alt=""><div><strong>Lịch sử phiên</strong><span>Mở ảnh lớn khi bấm</span></div></a>
+        </div>
+        <a class="select-stage" href="#full-main"><img class="shot" src="/assets/app-original-main.png" alt="Giao diện chính Verba Studio"></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="full-main" class="lightbox"><a class="close" href="#">Đóng</a><figure><img src="/assets/app-original-main.png" alt=""><figcaption>Tổng quan app</figcaption></figure></div>
+  <div id="full-center" class="lightbox"><a class="close" href="#">Đóng</a><figure><img src="/assets/app-original-center.png" alt=""><figcaption>Khu vực làm việc</figcaption></figure></div>
+  <div id="full-actions" class="lightbox"><a class="close" href="#">Đóng</a><figure><img src="/assets/app-original-actions.png" alt=""><figcaption>Thao tác chính</figcaption></figure></div>
+  <div id="full-sidebar" class="lightbox"><a class="close" href="#">Đóng</a><figure><img src="/assets/app-original-sidebar.png" alt=""><figcaption>Lịch sử phiên</figcaption></figure></div>
+</body>
+</html>
