@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Segoe UI,Arial,sans-serif">
+<defs><linearGradient id="o" x1="0" x2="1"><stop offset="0" stop-color="#ff5f56"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient></defs>
+<rect width="800" height="500" rx="18" fill="#0c0e13"/>
+<rect width="800" height="44" rx="18" fill="#12151c"/><rect y="26" width="800" height="18" fill="#12151c"/>
+<circle cx="26" cy="22" r="6" fill="#ff5f56"/><circle cx="46" cy="22" r="6" fill="#ffbd2e"/><circle cx="66" cy="22" r="6" fill="#27c93f"/>
+<g fill="url(#o)"><rect x="96" y="14" width="3" height="16" rx="1.5"/><rect x="102" y="10" width="3" height="24" rx="1.5"/><rect x="108" y="16" width="3" height="12" rx="1.5"/><rect x="114" y="12" width="3" height="20" rx="1.5"/></g>
+<text x="126" y="27" fill="#c9ced8" font-size="14" font-weight="600">Verba Studio</text><text x="600" y="27" fill="#8a91a0" font-size="13">Chroma key</text>
+<rect x="24" y="64" width="500" height="300" rx="12" fill="#1a1f2a"/>
+<rect x="24" y="64" width="245" height="300" rx="12" fill="#1fbf5a"/><rect x="250" y="64" width="19" height="300" fill="#1fbf5a"/>
+<circle cx="146" cy="170" r="42" fill="#2b3040"/><rect x="86" y="220" width="120" height="144" rx="40" fill="#2b3040"/>
+<circle cx="398" cy="170" r="42" fill="#3a4050"/><rect x="338" y="220" width="120" height="144" rx="40" fill="#3a4050"/>
+<rect x="269" y="64" width="2" height="300" fill="#ff8a3d"/>
+<text x="40" y="92" fill="#0c0e13" font-size="13" font-weight="700">GỐC</text><text x="290" y="92" fill="#ff8a3d" font-size="13" font-weight="700">ĐÃ XÓA PHÔNG</text>
+<rect x="544" y="64" width="232" height="300" rx="12" fill="#12151c"/>
+<text x="562" y="96" fill="#c9ced8" font-size="15" font-weight="600">Xóa phông xanh</text>
+<text x="562" y="130" fill="#8a91a0" font-size="12">Màu nền</text><rect x="660" y="116" width="96" height="22" rx="6" fill="#1fbf5a"/>
+<text x="562" y="170" fill="#8a91a0" font-size="12">Độ nhạy</text><rect x="562" y="180" width="194" height="6" rx="3" fill="#2b3040"/><rect x="562" y="180" width="120" height="6" rx="3" fill="url(#o)"/>
+<text x="562" y="220" fill="#8a91a0" font-size="12">Làm mềm viền</text><rect x="562" y="230" width="194" height="6" rx="3" fill="#2b3040"/><rect x="562" y="230" width="70" height="6" rx="3" fill="url(#o)"/>
+<rect x="562" y="300" width="194" height="40" rx="10" fill="url(#o)"/><text x="659" y="325" fill="#fff" font-size="14" font-weight="700" text-anchor="middle">Áp dụng</text>
+<rect x="24" y="384" width="752" height="92" rx="12" fill="#12151c"/>
+<text x="44" y="418" fill="#c9ced8" font-size="14" font-weight="600">Chạy thời gian thực khi quay và phát trực tiếp</text>
+<text x="44" y="446" fill="#8a91a0" font-size="12">Không cần OBS hay phần mềm thứ ba</text>
+</svg>

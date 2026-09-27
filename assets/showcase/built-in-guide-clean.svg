@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Segoe UI,Arial,sans-serif">
+<defs><linearGradient id="o" x1="0" x2="1"><stop offset="0" stop-color="#ff5f56"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient></defs>
+<rect width="800" height="500" rx="18" fill="#0c0e13"/>
+<rect width="800" height="44" rx="18" fill="#12151c"/><rect y="26" width="800" height="18" fill="#12151c"/>
+<circle cx="26" cy="22" r="6" fill="#ff5f56"/><circle cx="46" cy="22" r="6" fill="#ffbd2e"/><circle cx="66" cy="22" r="6" fill="#27c93f"/>
+<g fill="url(#o)"><rect x="96" y="14" width="3" height="16" rx="1.5"/><rect x="102" y="10" width="3" height="24" rx="1.5"/><rect x="108" y="16" width="3" height="12" rx="1.5"/><rect x="114" y="12" width="3" height="20" rx="1.5"/></g>
+<text x="126" y="27" fill="#c9ced8" font-size="14" font-weight="600">Verba Studio</text><text x="600" y="27" fill="#8a91a0" font-size="13">Hướng dẫn</text>
+<rect x="24" y="64" width="200" height="412" rx="12" fill="#12151c"/>
+<text x="42" y="96" fill="#8a91a0" font-size="12" font-weight="700">CÔNG CỤ</text>
+<rect x="34" y="110" width="180" height="34" rx="8" fill="#2a1d17"/><text x="50" y="132" fill="#ff8a3d" font-size="13" font-weight="600">Phát trực tiếp</text>
+<text x="50" y="172" fill="#c9ced8" font-size="13">Quay nhiều màn hình</text><text x="50" y="206" fill="#c9ced8" font-size="13">Ghi họp và transcript</text><text x="50" y="240" fill="#c9ced8" font-size="13">Xóa phông xanh</text><text x="50" y="274" fill="#c9ced8" font-size="13">Render theo lô</text><text x="50" y="308" fill="#c9ced8" font-size="13">Stream Deck</text>
+<rect x="244" y="64" width="532" height="412" rx="12" fill="#12151c"/>
+<text x="268" y="102" fill="#c9ced8" font-size="18" font-weight="600">Phát trực tiếp trong 3 bước</text>
+<circle cx="284" cy="146" r="14" fill="url(#o)"/><text x="284" y="151" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">1</text><text x="310" y="151" fill="#c9ced8" font-size="14">Chọn nguồn phát: màn hình, cửa sổ hoặc camera</text>
+<circle cx="284" cy="196" r="14" fill="url(#o)"/><text x="284" y="201" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">2</text><text x="310" y="201" fill="#c9ced8" font-size="14">Dán stream key của YouTube hoặc Facebook</text>
+<circle cx="284" cy="246" r="14" fill="url(#o)"/><text x="284" y="251" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">3</text><text x="310" y="251" fill="#c9ced8" font-size="14">Bấm Bắt đầu phát trực tiếp</text>
+<rect x="268" y="290" width="484" height="150" rx="10" fill="#1a1f2a"/>
+<text x="288" y="322" fill="#ffbd2e" font-size="13" font-weight="700">Mẹo</text>
+<text x="288" y="350" fill="#8a91a0" font-size="13">Bật "Lọc tiếng ồn tự động" để giọng rõ hơn.</text>
+<text x="288" y="376" fill="#8a91a0" font-size="13">Chọn khung dọc 9:16 khi phát lên TikTok, Reels.</text>
+<text x="288" y="402" fill="#8a91a0" font-size="13">Ctrl+Alt+R để quay hoặc dừng nhanh.</text>
+</svg>

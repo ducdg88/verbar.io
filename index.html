@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -224,6 +224,21 @@ section{position:relative;padding:96px 0 8px}
 .plan li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#cfd3da}
 .plan li::before{content:"✓";color:var(--green);font-weight:900;text-shadow:0 0 10px rgba(86,240,168,.5)}
 .plan .btn{width:100%}
+.plans--4{grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1100px){.plans--4{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.plans--4{grid-template-columns:1fr}}
+.plans--4 .plan{padding:30px 22px}
+.plans--4 .plan .price{font-size:34px}
+.plan--team{border-color:rgba(40,215,255,.45);background:linear-gradient(180deg,rgba(40,215,255,.07),var(--panel) 45%)}
+.plan .note{font-size:12px;color:var(--muted);margin-top:4px;margin-bottom:-6px}
+.soon{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:99px;font-size:10.5px;font-weight:800;letter-spacing:.04em;vertical-align:middle;color:#a5f3fc;background:rgba(40,215,255,.12);border:1px solid rgba(40,215,255,.35)}
+.live-now{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:99px;font-size:10.5px;font-weight:800;letter-spacing:.04em;vertical-align:middle;color:#56f0a8;background:rgba(86,240,168,.1);border:1px solid rgba(86,240,168,.35)}
+.team-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px}
+.seclist{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.seclist div{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.seclist b{display:block;font-size:15px;margin-bottom:4px}
+.seclist p{color:var(--muted);font-size:13.5px}
+.seclist .ic2{font-size:22px;line-height:1}
 
 /* ---------- FAQ ---------- */
 .faq{max-width:760px;margin:0 auto}
@@ -279,6 +294,7 @@ footer a:hover{color:var(--ink)}
     <div class="nav__links">
       <a href="#showcase">Giao diện</a>
       <a href="#features">Tính năng</a>
+      <a href="#team">Cho team</a>
       <a href="#steps">Cách dùng</a>
       <a href="#pricing">Bảng giá</a>
       <a href="#faq">FAQ</a>
@@ -410,6 +426,58 @@ chỉ với một cú click</h1>
   </div>
 </section>
 
+<!-- MOI CAP NHAT -->
+<section id="new-features">
+  <div class="wrap">
+    <h2 class="sec-title">Mới cập nhật</h2>
+    <p class="sec-sub">Ghi họp, bóc lời và biến buổi ghi thành việc làm được. Nhiều phần chạy ngay trên máy, không cần mạng.</p>
+    <div class="grid3">
+      <div class="fcard rv"><div class="ic">⚡</div><h3>Nhận diện ngay trên máy</h3><p>Whisper large-v3-turbo chạy trên card NVIDIA của bạn: miễn phí, không gửi âm thanh lên mạng. Máy không có GPU vẫn chạy được bằng CPU.</p></div>
+      <div class="fcard rv"><div class="ic">📖</div><h3>Từ điển riêng</h3><p>Thêm tên riêng, thuật ngữ và quy tắc tự sửa (ví dụ "vơ ba" thành "Verba"). AI gợi ý từ mới dựa trên các buổi ghi trước.</p></div>
+      <div class="fcard rv"><div class="ic">🗣️</div><h3>Nhận diện người nói</h3><p>Gắn tên từng người trong buổi họp, ghi chú theo từng người. Nhãn "ME" tự đổi thành tên của bạn.</p></div>
+      <div class="fcard rv"><div class="ic">✨</div><h3>Hỏi AI về buổi ghi</h3><p>Bấm Ctrl+J để hỏi bất kỳ điều gì về buổi ghi, tự chọn model trả lời. Tìm kiếm theo nghĩa trên toàn bộ các buổi ghi.</p></div>
+      <div class="fcard rv"><div class="ic">📚</div><h3>Tóm tắt chi tiết</h3><p>Ghi chép từng chủ đề kèm mốc thời gian, kiến thức chính và việc cần làm. Đổi nhanh sang bản 5 dòng hoặc email gửi người vắng mặt.</p></div>
+      <div class="fcard rv"><div class="ic">✍️</div><h3>Viết bài mạng xã hội</h3><p>Từ transcript, AI viết sẵn bài cho Facebook, TikTok, LinkedIn và YouTube. Chỉ cần đọc lại và đăng.</p></div>
+      <div class="fcard rv"><div class="ic">🎫</div><h3>Spec và ticket Linear</h3><p>Quy trình ghi, transcript, spec: bạn duyệt spec xong, app tự đẩy ticket lên Linear cho team làm tiếp.</p></div>
+      <div class="fcard rv"><div class="ic">🔊</div><h3>Thu âm hệ thống, lọc tạp âm</h3><p>Thu cả tiếng video và cuộc họp online vào transcript. Micro được khử ồn, khử vọng để chữ ra sạch hơn.</p></div>
+      <div class="fcard rv"><div class="ic">📝</div><h3>Sửa và góp ý transcript</h3><p>Sửa chữ nhận sai ngay trên transcript, app ghi nhớ để lần sau đúng hơn. Thêm góp ý vào từng câu khi xem lại.</p></div>
+    </div>
+  </div>
+</section>
+<!-- CHO TEAM -->
+<section id="team">
+  <div class="wrap">
+    <h2 class="sec-title">Cho team</h2>
+    <p class="sec-sub">Cá nhân dùng miễn phí. Cả team cùng dùng thì mỗi buổi họp thành việc được giao, có người nhận, có hạn.</p>
+    <div class="grid3">
+      <div class="fcard rv"><div class="ic">🎯</div><h3>Transcript chuẩn cho cả team<span class="live-now">ĐÃ CÓ</span></h3><p>Bật Chế độ Team, mọi buổi họp được bóc lời bằng Kyma. Cả team nhận cùng một bản transcript chuẩn, không phụ thuộc máy ai mạnh máy ai yếu.</p></div>
+      <div class="fcard rv"><div class="ic">🗂️</div><h3>Kho họp chung<span class="soon">SẮP CÓ</span></h3><p>Mọi buổi ghi của team nằm một chỗ. Phân quyền ai được xem buổi nào, tìm lại chỉ bằng một câu hỏi.</p></div>
+      <div class="fcard rv"><div class="ic">📖</div><h3>Từ điển chung<span class="soon">SẮP CÓ</span></h3><p>Tên khách, tên sản phẩm, thuật ngữ nội bộ. Một người sửa, cả team được bóc lời đúng hơn.</p></div>
+      <div class="fcard rv"><div class="ic">✅</div><h3>Việc tự giao người<span class="soon">SẮP CÓ</span></h3><p>AI tách việc từ buổi họp, giao đúng người, nhắc hạn qua Zalo hoặc Telegram. Hiện app đã đẩy được ticket sang Linear.</p></div>
+      <div class="fcard rv"><div class="ic">💬</div><h3>Hỏi AI trên kho họp<span class="soon">SẮP CÓ</span></h3><p>"Tuần trước ai hứa gửi báo giá?" AI trả lời kèm buổi họp và mốc thời gian. Càng dùng lâu càng giá trị.</p></div>
+      <div class="fcard rv"><div class="ic">📊</div><h3>Báo cáo tuần cho quản lý<span class="soon">SẮP CÓ</span></h3><p>Tổng hợp quyết định, việc đã xong và việc trễ hạn của cả team, gửi mỗi sáng thứ Hai.</p></div>
+    </div>
+    <div class="team-cta rv">
+      <a class="btn btn--fire" href="https://zalo.me/0963249467?text=T%C3%B4i%20mu%E1%BB%91n%20d%C3%B9ng%20th%E1%BB%AD%20Verba%20Studio%20g%C3%B3i%20Team%2014%20ng%C3%A0y" target="_blank" rel="noopener">Dùng thử cho team 14 ngày</a>
+      <a class="btn btn--ghost" href="#pricing">Xem bảng giá</a>
+    </div>
+  </div>
+</section>
+
+<!-- BAO MAT -->
+<section id="security">
+  <div class="wrap">
+    <h2 class="sec-title">Bảo mật</h2>
+    <p class="sec-sub">Nội dung họp là tài sản của doanh nghiệp. Verba Studio mặc định giữ nó trên máy của bạn.</p>
+    <div class="seclist">
+      <div class="rv"><span class="ic2">💻</span><span><b>Dữ liệu nằm trên máy</b><p>Buổi ghi, transcript, từ điển và tóm tắt được lưu trên máy của bạn. Không gửi lên cloud nếu bạn không bật.</p></span></div>
+      <div class="rv"><span class="ic2">⚡</span><span><b>Nhận diện ngay trên máy</b><p>Bản cá nhân bóc lời bằng GPU trên máy, âm thanh không rời máy tính.</p></span></div>
+      <div class="rv"><span class="ic2">🔑</span><span><b>Key của bạn, bạn giữ</b><p>Chế độ Team dùng Kyma API Key do chính team nắm giữ. Key được mã hoá và chỉ lưu trên máy.</p></span></div>
+      <div class="rv"><span class="ic2">☁️</span><span><b>Đồng bộ chỉ khi bạn bật</b><p>Muốn dùng trên nhiều máy thì bật đồng bộ tài khoản. Tắt lúc nào cũng được.</p></span></div>
+    </div>
+  </div>
+</section>
+
 <!-- STEPS -->
 <section id="steps">
   <div class="wrap">
@@ -427,15 +495,16 @@ chỉ với một cú click</h1>
 <section id="pricing">
   <div class="wrap">
     <h2 class="sec-title">Bảng giá đơn giản</h2>
-    <p class="sec-sub">Bắt đầu miễn phí — nâng cấp khi kênh của bạn lớn lên.</p>
-    <div class="plans">
+    <p class="sec-sub">Cá nhân dùng miễn phí. Nâng cấp khi kênh lớn lên, hoặc khi cả team cùng dùng.</p>
+    <div class="plans plans--4">
       <div class="plan rv">
         <h3>Free</h3>
         <div class="price">0đ</div>
         <ul>
           <li>Quay + live 720p, 1 nền tảng</li>
           <li>Thời gian ghi không giới hạn</li>
-          <li>AI transcript cơ bản</li>
+          <li>AI transcript chạy trên máy bằng GPU</li>
+          <li>Dữ liệu nằm trên máy của bạn</li>
           <li>Không cần thẻ tín dụng</li>
         </ul>
         <a class="btn btn--ghost" href="#download">Tải miễn phí</a>
@@ -452,12 +521,26 @@ chỉ với một cú click</h1>
         </ul>
         <a class="btn btn--fire" href="https://verbar.io/checkout?plan=Pro">Nâng cấp Pro</a>
       </div>
+      <div class="plan plan--team rv">
+        <h3 style="color:#7dd3fc">Team</h3>
+        <div class="price" style="font-size:26px;line-height:1.35">Theo số người</div>
+        <p class="note">Dùng thử 14 ngày, từ 3 người</p>
+        <ul>
+          <li>Mọi tính năng Pro cho từng thành viên</li>
+          <li>Transcript chuẩn bằng Kyma cho cả team</li>
+          <li>Kho họp chung, từ điển chung (sắp có)</li>
+          <li>Việc tự giao, nhắc hạn qua Zalo (sắp có)</li>
+          <li>Báo cáo tuần cho quản lý (sắp có)</li>
+        </ul>
+        <a class="btn btn--fire" href="https://zalo.me/0963249467?text=T%C3%B4i%20mu%E1%BB%91n%20d%C3%B9ng%20th%E1%BB%AD%20Verba%20Studio%20g%C3%B3i%20Team%2014%20ng%C3%A0y" target="_blank" rel="noopener">Dùng thử 14 ngày</a>
+      </div>
       <div class="plan plan--biz rv">
         <h3 style="color:var(--accent2)">Business</h3>
         <div class="price">Tùy chỉnh</div>
         <ul>
-          <li>Mọi tính năng Pro</li>
-          <li>Nhiều máy / nhiều tài khoản</li>
+          <li>Mọi tính năng Team</li>
+          <li>Đăng nhập tập trung Google Workspace</li>
+          <li>Quản trị thành viên, thanh toán theo số người</li>
           <li>Triển khai theo doanh nghiệp</li>
           <li>Hỗ trợ riêng 1-1</li>
         </ul>
@@ -477,6 +560,8 @@ chỉ với một cú click</h1>
       <details class="rv"><summary>Bản Free có giới hạn thời gian ghi không?</summary><div class="ans">Không. Bản Free ghi không giới hạn thời lượng — chỉ giới hạn độ phân giải 720p và live 1 nền tảng.</div></details>
       <details class="rv"><summary>AI transcript hỗ trợ tiếng Việt tốt không?</summary><div class="ans">Có — engine được tối ưu riêng cho tiếng Việt, hỗ trợ nhiều AI provider (Kyma, OpenAI, Gemini) và tự chuyển khi một provider lỗi.</div></details>
       <details class="rv"><summary>Chat live có hiện khi tôi ẩn panel trong app không?</summary><div class="ans">Có. Chat YouTube vẫn được monitor ở nền và có thể mở cửa sổ nổi riêng trên desktop để đọc bình luận dài, không bị rút gọn bằng dấu ba chấm.</div></details>
+      <details class="rv"><summary>Gói Team cần chuẩn bị gì?</summary><div class="ans">Team cần một Kyma API Key (bật Audio cho key). Bật "Chế độ Team" trong Cài đặt, mọi buổi họp sẽ được bóc lời bằng Kyma để cả team nhận cùng một bản transcript chuẩn. Chưa có key thì app nhắc dán key trước khi ghi.</div></details>
+      <details class="rv"><summary>Nội dung họp có bị gửi lên máy chủ không?</summary><div class="ans">Bản cá nhân nhận diện ngay trên máy, dữ liệu nằm trên máy của bạn. Chế độ Team gửi âm thanh tới Kyma bằng key của chính team để bóc lời. Đồng bộ tài khoản chỉ chạy khi bạn bật.</div></details>
       <details class="rv"><summary>Tôi có cần cài OBS không?</summary><div class="ans">Không cần. Verba Studio là công cụ tất-cả-trong-một: quay, live, phụ đề, chroma key đều có sẵn.</div></details>
       <details class="rv"><summary>Stream key của tôi có an toàn không?</summary><div class="ans">Stream key được mã hóa và chỉ lưu trên máy của bạn. Chúng tôi không thể đọc được key của bạn.</div></details>
     </div>
@@ -489,6 +574,7 @@ chỉ với một cú click</h1>
     <h2>Download <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">Verba Studio</span></h2>
     <p>Tải bản Windows mới nhất tại đây — không cần thẻ, không giới hạn thời gian ghi.</p>
     <a class="btn btn--fire" style="padding:16px 40px;font-size:16px" href="https://github.com/Ducpt88/verba-studio/releases/download/v1.0.5/Verba-Studio-Windows-x64-20260708-2144.zip">⬇ Tải Verba Studio miễn phí</a>
+      <a class="btn btn--ghost" style="padding:16px 32px;font-size:16px;margin-left:10px" href="https://zalo.me/0963249467?text=T%C3%B4i%20mu%E1%BB%91n%20d%C3%B9ng%20th%E1%BB%AD%20Verba%20Studio%20g%C3%B3i%20Team%2014%20ng%C3%A0y" target="_blank" rel="noopener">Dùng thử cho team 14 ngày</a>
   </div>
 </div>
 
@@ -497,6 +583,7 @@ chỉ với một cú click</h1>
     <span>© 2026 Verba Studio · Mọi quyền được bảo lưu</span>
     <span style="display:flex;gap:20px">
       <a href="https://verbar.io/#features">Tính năng</a>
+      <a href="https://verbar.io/#team">Cho team</a>
       <a href="https://verbar.io/#pricing">Bảng giá</a>
       <a href="https://verbar.io/#faq">FAQ</a>
       <a href="https://verbar.io/#download">Tải về</a>

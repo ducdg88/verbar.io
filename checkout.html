@@ -46,6 +46,7 @@ const email = params.get('email') || localStorage.getItem('verba_account_email')
 const plans = {
   Free: { amount: 0, label: '0đ' },
   Pro: { amount: 199000, label: '199.000đ' },
+  Team: { amount: null, label: 'Theo số người' },
   Business: { amount: null, label: 'Thỏa thuận' }
 };
 const sepay = {
