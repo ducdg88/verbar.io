@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thanh toán Verba Studio</title>
+<link rel="icon" href="./assets/logo/verba-icon-official.svg?v=16" type="image/svg+xml">
+<meta name="theme-color" content="#0c0e13">
+<style>
+:root{--accent:#ff4d3d;--ink:#f4f5f7;--muted:#9aa0ab;--line:#23262e;--bg:#0c0e13;--panel:#11141c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;padding:18px;font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 50% 0,rgba(255,77,61,.2),transparent 42%),var(--bg);line-height:1.5}
+.card{width:min(420px,100%);border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:18px;box-shadow:0 28px 90px rgba(0,0,0,.5)}
+.brand{display:inline-flex;margin-bottom:14px}.brand img{width:156px;height:auto}
+h1{font-size:22px;line-height:1.15;margin-bottom:6px}p{color:var(--muted);font-size:13px}
+.rows{display:grid;gap:8px;margin:14px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);padding:9px 10px}.row span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}.row b{text-align:right;font-size:13px;overflow:hidden;text-overflow:ellipsis}
+.qr{display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:#fff;padding:12px;margin:12px 0}.qr img{display:block;width:220px;max-width:100%;height:auto}.qr.missing{background:#0c0e13;color:var(--muted);min-height:160px;text-align:center;font-size:13px;line-height:1.55}
+.status{border:1px solid rgba(255,77,61,.32);border-radius:10px;background:rgba(255,77,61,.08);padding:10px 12px;color:#fff;font-size:13px;margin-top:10px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.btn{display:flex;align-items:center;justify-content:center;border:0;border-radius:10px;background:var(--accent);color:#fff;font-weight:900;text-decoration:none;padding:11px 12px;cursor:pointer}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+</style>
+</head>
+<body>
+<main class="card">
+  <a class="brand" href="./"><img src="./assets/logo/verba-logo-official.svg?v=16" alt="Verba Studio"></a>
+  <h1>Thanh toán Verba Studio</h1>
+  <p>Quét QR SePay. Hệ thống sẽ tự nhận diện theo mã đơn.</p>
+  <div class="rows">
+    <div class="row"><span>Gói</span><b id="plan">Pro</b></div>
+    <div class="row"><span>Số tiền</span><b id="amount">199.000đ</b></div>
+    <div class="row"><span>Mã đơn</span><b id="order">---</b></div>
+    <div class="row"><span>Email</span><b id="email">---</b></div>
+  </div>
+  <div class="qr" id="qr"></div>
+  <p>Nội dung chuyển khoản phải giữ đúng mã đơn để SePay tự xác nhận.</p>
+  <div class="status" id="status">Đang chờ thanh toán qua SePay.</div>
+  <div class="actions">
+    <a class="btn ghost" id="zalo" target="_blank" rel="noopener">Hỗ trợ Zalo</a>
+    <a class="btn" href="./?v=17">Về website</a>
+  </div>
+</main>
+<script>
+const params = new URLSearchParams(location.search);
+const plan = params.get('plan') || 'Pro';
+const client = params.get('client') || localStorage.getItem('verba_client_code') || `VS-${Date.now().toString(36).toUpperCase()}`;
+const email = params.get('email') || localStorage.getItem('verba_account_email') || '';
+const plans = {
+  Free: { amount: 0, label: '0đ' },
+  Pro: { amount: 199000, label: '199.000đ' },
+  Business: { amount: null, label: 'Thỏa thuận' }
+};
+const sepay = {
+  bankId: window.VERBA_SEPAY_BANK_ID || localStorage.getItem('verba_sepay_bank_id') || '',
+  accountNo: window.VERBA_SEPAY_ACCOUNT_NO || localStorage.getItem('verba_sepay_account_no') || '',
+  accountName: window.VERBA_SEPAY_ACCOUNT_NAME || localStorage.getItem('verba_sepay_account_name') || 'VERBA STUDIO'
+};
+const info = plans[plan] || plans.Pro;
+const order = `VS${client.replace(/[^A-Z0-9]/gi,'').slice(-10).toUpperCase()}${plan.slice(0,1).toUpperCase()}`;
+const money = value => Number(value || 0).toLocaleString('vi-VN') + 'đ';
+document.getElementById('plan').textContent = plan;
+document.getElementById('amount').textContent = info.amount ? money(info.amount) : info.label;
+document.getElementById('order').textContent = order;
+document.getElementById('email').textContent = email || 'Chưa có email';
+const qr = document.getElementById('qr');
+if (sepay.bankId && sepay.accountNo && info.amount) {
+  const src = `https://img.vietqr.io/image/${encodeURIComponent(sepay.bankId)}-${encodeURIComponent(sepay.accountNo)}-compact2.png?amount=${encodeURIComponent(info.amount)}&addInfo=${encodeURIComponent(order)}&accountName=${encodeURIComponent(sepay.accountName)}`;
+  qr.innerHTML = `<img src="${src}" alt="QR thanh toán SePay">`;
+} else {
+  qr.classList.add('missing');
+  qr.textContent = plan === 'Business' ? 'Gói Business sẽ được báo giá riêng.' : 'Đang chờ cấu hình tài khoản SePay trên website.';
+}
+document.getElementById('zalo').href = `https://zalo.me/0963249467?text=${encodeURIComponent(`Tôi muốn thanh toán Verba Studio gói ${plan}.\nMã đơn: ${order}\nMã khách: ${client}\nEmail: ${email || 'chưa nhập'}\nSố tiền: ${info.amount ? money(info.amount) : info.label}`)}`;
+</script>
+</body>
+</html>

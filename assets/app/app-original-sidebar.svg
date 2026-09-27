@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560">
+  <rect width="960" height="560" rx="24" fill="#0f131a"/>
+  <rect x="54" y="48" width="270" height="464" rx="20" fill="#171d27" stroke="#303848"/>
+  <rect x="354" y="48" width="552" height="464" rx="20" fill="#111722" stroke="#303848"/>
+  <text x="86" y="104" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="24" font-weight="800">Lịch sử phiên</text>
+  <g fill="#273142">
+    <rect x="84" y="138" width="210" height="58" rx="14"/>
+    <rect x="84" y="214" width="210" height="58" rx="14"/>
+    <rect x="84" y="290" width="210" height="58" rx="14"/>
+    <rect x="84" y="366" width="210" height="58" rx="14"/>
+  </g>
+  <rect x="84" y="138" width="6" height="58" rx="3" fill="#ff4d3d"/>
+  <rect x="392" y="94" width="284" height="26" rx="13" fill="#f4f7fb"/>
+  <rect x="392" y="154" width="450" height="16" rx="8" fill="#707c8f"/>
+  <rect x="392" y="192" width="392" height="16" rx="8" fill="#566274"/>
+  <rect x="392" y="254" width="450" height="178" rx="18" fill="#171d27"/>
+  <path d="M430 376 C500 286 580 302 642 350 S746 394 810 310" fill="none" stroke="#ff4d3d" stroke-width="12" stroke-linecap="round"/>
+</svg>

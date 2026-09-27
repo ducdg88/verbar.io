@@ -1,0 +1,17 @@
+<svg width="492" height="72" viewBox="0 0 492 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">Verba Studio</title>
+  <defs>
+    <filter id="waveGlow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2.4" flood-color="#FF4D3D" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <text x="0" y="52" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="56" fill="#F4F5F7" letter-spacing="-1">Verba Studio</text>
+  <g fill="#FF4D3D" transform="translate(402,0)" filter="url(#waveGlow)">
+    <rect x="0" y="30" width="7" height="12" rx="3.5"/>
+    <rect x="12" y="22" width="7" height="28" rx="3.5"/>
+    <rect x="24" y="12" width="7" height="48" rx="3.5"/>
+    <rect x="36" y="24" width="7" height="24" rx="3.5"/>
+    <rect x="48" y="18" width="7" height="36" rx="3.5"/>
+    <rect x="60" y="30" width="7" height="12" rx="3.5"/>
+  </g>
+</svg>

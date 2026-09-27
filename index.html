@@ -1,550 +1,647 @@
-﻿<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verba Studio — Phòng thu chuyên nghiệp cho Streamer & Creator</title>
-<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
-<link rel="icon" href="/favicon-32x32.png?v=3" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
-<link rel="manifest" href="/manifest.json">
-<meta name="description" content="Quay đa màn hình, live stream đa nền tảng, AI transcript tiếng Việt, tóm tắt cuộc họp tự động. Verba Studio — phòng thu của bạn.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://verbar.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Verba Studio - Quay màn hình, livestream và AI transcript tiếng Việt">
-<meta property="og:description" content="Quay đa màn hình, live đa nền tảng, tạo AI transcript tiếng Việt, chat live nổi, zoom con trỏ và tái sử dụng video thành phụ đề, bài viết, short video.">
-<meta property="og:url" content="https://verbar.io/">
-<meta property="og:image" content="https://verbar.io/assets/verba-social-card.png">
-<meta property="og:locale" content="vi_VN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Verba Studio - Quay màn hình, livestream và AI transcript tiếng Việt">
-<meta name="twitter:description" content="Phòng thu cho creator, giảng viên, streamer và đội bán hàng cần quay màn hình, livestream và tạo transcript tiếng Việt.">
-<meta name="twitter:image" content="https://verbar.io/assets/verba-social-card.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://verbar.io/#organization","name":"Verba Studio","url":"https://verbar.io/","logo":"https://verbar.io/favicon-192x192.png"},{"@type":"WebSite","@id":"https://verbar.io/#website","url":"https://verbar.io/","name":"Verba Studio","description":"Verba Studio là phòng thu cho quay màn hình, livestream đa nền tảng và AI transcript tiếng Việt.","inLanguage":"vi-VN","publisher":{"@id":"https://verbar.io/#organization"}},{"@type":["Product","SoftwareApplication"],"@id":"https://verbar.io/#software","name":"Verba Studio","applicationCategory":"MultimediaApplication","operatingSystem":"Windows 10/11","url":"https://verbar.io/","description":"Verba Studio là ứng dụng quay màn hình, livestream đa nền tảng và tạo AI transcript tiếng Việt cho creator, giảng viên, streamer và đội bán hàng.","image":"https://verbar.io/assets/verba-social-card.png","brand":{"@type":"Brand","name":"Verba Studio"},"offers":{"@type":"Offer","price":"199000","priceCurrency":"VND","availability":"https://schema.org/InStock","url":"https://verbar.io/"}},{"@type":"FAQPage","@id":"https://verbar.io/#faq","mainEntity":[{"@type":"Question","name":"Verba Studio là gì?","acceptedAnswer":{"@type":"Answer","text":"Verba Studio là ứng dụng quay màn hình, livestream đa nền tảng và tạo AI transcript tiếng Việt cho creator, giảng viên, streamer và đội bán hàng."}},{"@type":"Question","name":"Verba Studio chạy trên hệ điều hành nào?","acceptedAnswer":{"@type":"Answer","text":"Verba Studio hiện hỗ trợ Windows 10/11 bản 64-bit. Phiên bản macOS đang được phát triển."}},{"@type":"Question","name":"Verba Studio có bản miễn phí không?","acceptedAnswer":{"@type":"Answer","text":"Có. Verba Studio có gói Free để bắt đầu và gói Pro cho nhu cầu quay, livestream và sản xuất nội dung chuyên nghiệp hơn."}},{"@type":"Question","name":"AI transcript tiếng Việt dùng để làm gì?","acceptedAnswer":{"@type":"Answer","text":"AI transcript tiếng Việt giúp chuyển lời nói trong video thành văn bản để làm phụ đề, viết bài, cắt short video và tái sử dụng nội dung."}},{"@type":"Question","name":"Có cần OBS hay phần mềm nào khác không?","acceptedAnswer":{"@type":"Answer","text":"Không cần. Verba Studio là ứng dụng độc lập, tích hợp các bước capture, encode và livestream trong một workflow."}}]},{"@type":"BreadcrumbList","@id":"https://verbar.io/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Verba Studio","item":"https://verbar.io/"}]}]}</script>
+<meta name="description" content="Quay đa màn hình, live đa nền tảng, AI transcript tiếng Việt, chat live nổi, auto Like & Đăng ký, nguồn capture card/điện thoại và zoom con trỏ.">
+<link rel="icon" href="https://verbar.io/assets/logo/verba-icon-official.svg" type="image/svg+xml">
+<script src="https://api.affitor.com/js/affitor-tracker.js" data-affitor-program-id="1080"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--accent:#FF4D3D;--ink:#f4f5f7;--muted:#9aa0ab;--line:#23262e;--bg:#0c0e13;--panel:#14171f}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,system-ui,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
-.glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,61,.35),transparent 65%);top:-200px;left:50%;transform:translateX(-50%);filter:blur(40px);z-index:1;pointer-events:none}
-/* NAV */
-header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
-.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;text-decoration:none;color:var(--ink)}
-.brand .logo-wave{width:30px;height:22px;color:var(--accent);flex:0 0 auto}
-nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px;font-weight:600;transition:color .2s}
-nav a:hover{color:var(--ink)}
-.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:10px;font-weight:700;text-decoration:none;font-size:14px;box-shadow:0 8px 30px rgba(255,77,61,.4);transition:opacity .2s}
-.btn:hover{opacity:.88}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
-/* HERO */
-.hero{text-align:center;padding:90px 0 50px}
-.pill{display:inline-block;border:1px solid var(--line);color:var(--accent);font-weight:700;font-size:12px;padding:7px 16px;border-radius:999px;margin-bottom:22px}
-.hero h1{font-size:60px;line-height:1.05;letter-spacing:-2px;max-width:840px;margin:0 auto 18px;font-weight:800}
-.hero h1 span{background:linear-gradient(90deg,#FF4D3D,#ff8a3d);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto 30px}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.bar{display:flex;gap:6px;justify-content:center;align-items:flex-end;height:60px;margin-top:46px}
-.bar i{width:9px;border-radius:6px;background:linear-gradient(180deg,#FF4D3D,#ff8a3d);animation:eq 1.1s ease-in-out infinite}
-@keyframes eq{0%,100%{height:18px}50%{height:56px}}
-/* APP MOCKUP */
-.mockup{margin:50px auto 0;max-width:900px;background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.mockup-bar{background:#1a1d25;padding:14px 20px;display:flex;align-items:center;gap:8px}
-.mockup-dot{width:12px;height:12px;border-radius:50%}
-.mockup-screen{padding:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;min-height:220px}
-.m-card{background:#0c0e13;border:1px solid var(--line);border-radius:12px;padding:16px;font-size:13px;color:var(--muted)}
-.m-card strong{display:block;color:var(--ink);margin-bottom:6px;font-size:14px}
-.m-tag{display:inline-block;background:rgba(255,77,61,.15);color:var(--accent);font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;margin-bottom:8px}
-.m-wave{display:flex;align-items:flex-end;gap:3px;height:32px;margin-top:10px}
-.m-wave span{width:5px;border-radius:3px;background:var(--accent);opacity:.7}
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:70px 0}
-.stat{background:var(--panel);padding:28px;text-align:center}
-.stat .num{font-size:36px;font-weight:800;background:linear-gradient(90deg,#FF4D3D,#ff8a3d);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
-/* FEATURES */
-.sec-title{text-align:center;font-size:38px;letter-spacing:-1px;margin-bottom:8px;font-weight:800}
-.sec-sub{text-align:center;color:var(--muted);margin-bottom:40px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 0 70px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .2s}
-.card:hover{border-color:rgba(255,77,61,.4)}
-.card .ic{font-size:26px}.card h3{margin:12px 0 6px;font-size:17px;font-weight:700}.card p{color:var(--muted);font-size:14px}
-/* HOW IT WORKS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 0 80px}
-.step{text-align:center;padding:0 16px}
-.step-num{width:44px;height:44px;border-radius:50%;background:rgba(255,77,61,.15);border:1px solid rgba(255,77,61,.4);color:var(--accent);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.step h3{font-size:16px;font-weight:700;margin-bottom:8px}
-.step p{color:var(--muted);font-size:14px}
-.step-arrow{display:flex;align-items:center;justify-content:center;padding-top:22px;color:var(--line);font-size:24px}
-/* TESTIMONIALS */
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 0 80px}
-.review{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-.review-stars{color:#FFB800;font-size:13px;margin-bottom:12px}
-.review p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
-.review-author{display:flex;align-items:center;gap:10px}
-.review-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF4D3D,#ff8a3d);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
-.review-name{font-size:13px;font-weight:700}
-.review-role{font-size:12px;color:var(--muted)}
-/* PRICING */
-.price{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:760px;margin:0 auto 90px}
-.plan{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px}
-.plan.pro{border:1px solid var(--accent);box-shadow:0 0 50px rgba(255,77,61,.18)}
-.plan-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;margin-bottom:12px}
-.plan h3{font-size:18px;font-weight:700}
-.plan .amt{font-size:42px;font-weight:800;margin:10px 0;line-height:1}
-.plan .amt small{font-size:15px;color:var(--muted);font-weight:600}
-.plan ul{list-style:none;margin:16px 0 22px}
-.plan li{padding:6px 0;font-size:14px;display:flex;align-items:flex-start;gap:8px}
-.plan li::before{content:"✓";color:var(--accent);font-weight:800;flex-shrink:0}
-/* FAQ */
-.faq{max-width:760px;margin:0 auto 90px}
-.faq-item{border-bottom:1px solid var(--line);padding:20px 0}
-.faq-q{font-size:15px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
-.faq-q::after{content:"+";color:var(--accent);font-size:20px;font-weight:300;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{color:var(--muted);font-size:14px;margin-top:10px;line-height:1.7;display:none}
-.faq-item.open .faq-a{display:block}
-/* DOWNLOAD CTA */
-.dl-box{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:56px;text-align:center;margin-bottom:80px}
-.dl-box h2{font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}
-.dl-box p{color:var(--muted);margin-bottom:28px}
-.dl-meta{font-size:12px;color:var(--muted);margin-top:14px}
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:40px 0 30px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
-.footer-brand{font-weight:800;font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.footer-brand .logo-wave{width:24px;height:18px;color:var(--accent);flex:0 0 auto}
-.footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:260px}
-.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:14px}
-.footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;margin-bottom:8px;transition:color .2s}
-.footer-col a:hover{color:var(--ink)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap;gap:10px}
-.social{display:flex;gap:10px}
-.social a{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:14px;transition:border-color .2s,color .2s}
-.social a:hover{border-color:var(--accent);color:var(--accent)}
-@media(max-width:760px){
-  .grid,.price,.reviews,.steps,.footer-grid{grid-template-columns:1fr}
-  .hero h1{font-size:40px}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .mockup-screen{grid-template-columns:1fr}
-  .dl-box{padding:36px 24px}
+:root{
+  --accent:#FF4D3D; --accent2:#ff8a3d; --cyan:#28d7ff; --green:#56f0a8;
+  --ink:#f4f5f7; --muted:#9aa0ab; --line:#23262e; --bg:#0c0e13; --panel:#14171f;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+  line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
 
-/* Book-style app showcase */
-.book-showcase{--paper:#f7f4ee;--paper2:#fffaf2;margin:42px 0 18px;background:rgba(20,23,31,.72);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 20px 70px rgba(0,0,0,.28);overflow:hidden}
-.book-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}.book-head h2{font-size:23px;line-height:1.15;margin:0}.book-head p{color:var(--muted);font-size:13px;margin:5px 0 0}.book-head a{font-size:13px;color:var(--accent);font-weight:800;text-decoration:none}
-.book-frame{position:relative;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,#121720,#0e1118);padding:18px;overflow:hidden}.book-frame:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:18px 18px;opacity:.12;pointer-events:none}
-.book-ui{position:relative;z-index:2}.choice{position:absolute;opacity:0;pointer-events:none}.book{position:relative;width:min(980px,100%);margin:0 auto;min-height:590px;perspective:1800px;transform-style:preserve-3d}.book:before{content:"";position:absolute;top:8px;bottom:28px;left:50%;width:1px;background:rgba(64,47,30,.28);box-shadow:-10px 0 24px rgba(0,0,0,.18),10px 0 24px rgba(0,0,0,.14);z-index:5;pointer-events:none}.cover-shadow{position:absolute;left:4%;right:4%;bottom:10px;height:36px;background:rgba(0,0,0,.55);filter:blur(24px);border-radius:50%;opacity:.72}
-.spread{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:0;transform:none;transition:none;pointer-events:none;transform-style:preserve-3d}.page{display:block;position:relative;min-height:560px;background:linear-gradient(90deg,var(--paper),var(--paper2));color:#171717;padding:26px;border:1px solid rgba(255,255,255,.55);box-shadow:0 28px 80px rgba(0,0,0,.34);overflow:hidden}.page.left{border-radius:16px 4px 4px 16px;transform-origin:right center}.page.right{border-radius:4px 16px 16px 4px;transform-origin:left center}.page.left:after,.page.right:before{content:"";position:absolute;top:0;bottom:0;width:36px;pointer-events:none}.page.left:after{right:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.15))}.page.right:before{left:0;background:linear-gradient(90deg,rgba(0,0,0,.13),transparent)}
-.page-num{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}.page h3{font-size:28px;line-height:1.1;margin:12px 0 10px;color:#111}.page p{font-size:14px;color:#56524d;line-height:1.65;margin:0 0 18px}.book-shot{background:#fff;border:1px solid #e8e0d5;border-radius:10px;padding:8px;box-shadow:0 18px 40px rgba(28,20,12,.18)}.book-shot img{display:block;width:100%;height:292px;object-fit:contain;border-radius:7px;background:#fff}.book-features{display:grid;gap:10px;margin-top:18px}.book-feature{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;border-top:1px solid #e8dfd2;padding-top:10px}.book-feature b{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:#ff4d3d;color:#fff;font-size:12px}.book-feature strong{display:block;font-size:14px;color:#151515}.book-feature span{display:block;color:#645f59;font-size:13px;margin-top:2px}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.mini{background:#fff;border:1px solid #eadfd1;border-radius:10px;padding:8px}.mini img{display:block;height:112px;width:100%;object-fit:contain;border-radius:6px}.mini span{display:block;color:#171717;font-size:12px;font-weight:900;margin-top:7px}
-#spread-1:checked~.book .s1,#spread-2:checked~.book .s2,#spread-3:checked~.book .s3{opacity:1;transform:none;pointer-events:auto}.book.is-flipping .spread{pointer-events:none}.page-turn,.page-back{cursor:pointer;transition:transform .22s ease,box-shadow .22s ease}.page-turn:hover{transform:translateX(3px);box-shadow:0 34px 90px rgba(0,0,0,.42)}.page-back:hover{transform:translateX(-3px);box-shadow:0 34px 90px rgba(0,0,0,.42)}.page-turn:after{content:"";position:absolute;right:0;top:0;width:72px;height:72px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(225,212,191,.55) 48%,transparent 50%);clip-path:polygon(100% 0,0 0,100% 100%);opacity:.42;transition:opacity .2s ease,transform .2s ease;pointer-events:none}.page-turn:hover:after{opacity:.85;transform:translate(-4px,4px) rotate(-2deg)}.page-back:before{content:"";position:absolute;left:0;top:0;width:72px;height:72px;background:linear-gradient(225deg,rgba(255,255,255,.9),rgba(225,212,191,.55) 48%,transparent 50%);clip-path:polygon(0 0,100% 0,0 100%);opacity:.42;transition:opacity .2s ease,transform .2s ease;pointer-events:none}.page-back:hover:before{opacity:.85;transform:translate(4px,4px) rotate(2deg)}.turn-hint{position:absolute;right:24px;bottom:20px;color:#ff4d3d;font-size:12px;font-weight:900}.back-hint{position:absolute;left:24px;bottom:20px;color:#ff4d3d;font-size:12px;font-weight:900}
-.flip-page{display:none;position:absolute;top:0;bottom:30px;width:50%;background:linear-gradient(90deg,#f2eadc,#fffaf2 36%,#eee2d0);border:1px solid rgba(255,255,255,.72);box-shadow:0 34px 90px rgba(0,0,0,.44);z-index:12;pointer-events:none;backface-visibility:hidden;transform-style:preserve-3d;overflow:hidden}.flip-page:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent 18%,rgba(255,255,255,.45) 52%,rgba(0,0,0,.16));opacity:.62}.flip-page:after{content:"";position:absolute;top:16px;bottom:16px;width:22px;background:linear-gradient(90deg,rgba(0,0,0,.22),transparent);opacity:.45}.flip-page.forward-sheet{background:linear-gradient(90deg,#f4eadc,#fffaf2 45%,#eadfcd)}.flip-page.back-sheet{background:linear-gradient(90deg,#eadfcd,#fffaf2 55%,#f4eadc)}.book.flipping-forward .flip-page{display:block;left:50%;border-radius:4px 16px 16px 4px;transform-origin:left center;animation:pageForward .86s cubic-bezier(.18,.72,.2,1) both}.book.flipping-forward .flip-page:after{left:0}.book.flipping-back .flip-page{display:block;right:50%;border-radius:16px 4px 4px 16px;transform-origin:right center;animation:pageBack .86s cubic-bezier(.18,.72,.2,1) both}.book.flipping-back .flip-page:after{right:0;transform:scaleX(-1)}
-@keyframes pageForward{0%{transform:rotateY(0deg);filter:brightness(1)}42%{filter:brightness(.82);box-shadow:-52px 28px 80px rgba(0,0,0,.48)}100%{transform:rotateY(-180deg);filter:brightness(.94)}}@keyframes pageBack{0%{transform:rotateY(0deg);filter:brightness(1)}42%{filter:brightness(.82);box-shadow:52px 28px 80px rgba(0,0,0,.48)}100%{transform:rotateY(180deg);filter:brightness(.94)}}
-@media(max-width:760px){.book-head{display:block}.book-frame{padding:12px}.book{min-height:auto}.spread{position:static;display:none;grid-template-columns:1fr;gap:0;transform:none}#spread-1:checked~.book .s1,#spread-2:checked~.book .s2,#spread-3:checked~.book .s3{display:grid}.page,.page.left,.page.right{min-height:auto;border-radius:14px;margin-bottom:12px}.cover-shadow,.flip-page{display:none!important}.book-shot img{height:220px}}
+/* ---------- PRELOADER ---------- */
+.loader{position:fixed;inset:0;z-index:900;display:grid;place-items:center;background:#080a0f;transition:opacity .5s ease,visibility .5s ease}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader__eq{display:flex;gap:5px;align-items:center;height:48px}
+.loader__eq i{width:6px;border-radius:99px;background:linear-gradient(180deg,var(--accent),var(--accent2));animation:eq .9s ease-in-out infinite;box-shadow:0 0 16px rgba(255,77,61,.55)}
+.loader__eq i:nth-child(1){animation-delay:0s}.loader__eq i:nth-child(2){animation-delay:.12s}.loader__eq i:nth-child(3){animation-delay:.24s}.loader__eq i:nth-child(4){animation-delay:.36s}.loader__eq i:nth-child(5){animation-delay:.18s}
+.loader__txt{margin-top:18px;font-size:12px;font-weight:800;letter-spacing:.35em;color:var(--muted);text-transform:uppercase;animation:pulse 1.4s ease-in-out infinite}
 
-</style></head><body>
-<div class="glow"></div>
-<div class="wrap">
+/* ---------- BACKGROUND FX ---------- */
+.bg-glow{position:fixed;width:720px;height:720px;border-radius:50%;top:-260px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,77,61,.32),transparent 65%);filter:blur(50px);z-index:0;pointer-events:none;animation:drift 16s ease-in-out infinite}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(255,77,61,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,77,61,.04) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,#000 0%,transparent 75%);animation:gridMove 22s linear infinite}
+.spotlight{position:fixed;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(255,77,61,.06),transparent 60%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+@keyframes drift{0%,100%{transform:translateX(-50%) translateY(0) scale(1)}50%{transform:translateX(-45%) translateY(40px) scale(1.08)}}
+@keyframes gridMove{from{background-position:0 0}to{background-position:88px 44px}}
+@keyframes eq{0%,100%{height:12px;opacity:.6}50%{height:38px;opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
 
-<!-- HEADER -->
-<header>
-  <a class="brand" href="#">
-    Verba Studio
-    <svg class="logo-wave" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><rect x="9" y="27" width="5" height="10" rx="2.5"/><rect x="17" y="21" width="5" height="22" rx="2.5"/><rect x="25" y="15" width="5" height="34" rx="2.5"/><rect x="33" y="21" width="5" height="22" rx="2.5"/><rect x="41" y="25" width="5" height="14" rx="2.5"/><rect x="49" y="28" width="5" height="8" rx="2.5"/></g></svg>
-  </a>
-  <nav>
-    <a href="#features">Tính năng</a>
-    <a href="#pricing">Bảng giá</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn ghost" href="#">Đăng nhập</a>
+/* ---------- SCROLL PROGRESS ---------- */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:800;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--cyan));box-shadow:0 0 14px rgba(255,77,61,.7)}
+
+/* ---------- NAV (liquid glass) ---------- */
+.navwrap{position:fixed;top:0;left:0;right:0;z-index:700;padding:14px 24px 0;transition:padding .3s ease}
+.nav{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-radius:16px;transition:background .35s ease,box-shadow .35s ease,backdrop-filter .35s ease}
+.nav.glass{background:rgba(12,14,19,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 1px rgba(255,255,255,.08),0 18px 44px rgba(0,0,0,.4)}
+.nav__brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;letter-spacing:-.02em}
+.nav__brand .eqmini{display:flex;gap:3px;align-items:center;height:20px}
+.nav__brand .eqmini i{width:3.5px;border-radius:99px;background:var(--accent);animation:eq 1s ease-in-out infinite;box-shadow:0 0 8px rgba(255,77,61,.6)}
+.nav__brand .eqmini i:nth-child(2){animation-delay:.15s}.nav__brand .eqmini i:nth-child(3){animation-delay:.3s}
+.nav__links{display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--muted)}
+.nav__links a{position:relative;transition:color .2s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,.9,.36,1)}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{transform:scaleX(1)}
+@media(max-width:760px){.nav__links{display:none}}
+
+/* ---------- BUTTONS ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;border-radius:12px;font-weight:700;font-size:14.5px;cursor:pointer;border:none;overflow:hidden;transition:transform .2s cubic-bezier(.22,.9,.36,1),box-shadow .25s ease,background .25s ease,color .25s ease}
+.btn--fire{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 34px rgba(255,77,61,.4)}
+.btn--fire:hover{transform:translateY(-2px);box-shadow:0 18px 48px rgba(255,77,61,.5)}
+.btn--ghost{background:rgba(255,255,255,.04);color:var(--ink);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px)}
+.btn--ghost:hover{transform:translateY(-2px);background:#fff;color:#000;border-color:#fff}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.35) 50%,transparent 75%);translate:-140% 0;pointer-events:none}
+.btn:hover::after{animation:shine .75s ease}
+@keyframes shine{to{translate:140% 0}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:150px 0 60px;overflow:hidden}
+.hero__waves{position:absolute;left:50%;top:110px;width:min(1000px,95vw);height:240px;transform:translateX(-50%);z-index:0;opacity:.7;pointer-events:none}
+.hero__waves span{position:absolute;left:0;right:0;height:90px;border:1px solid transparent;border-top-color:rgba(255,77,61,.38);border-radius:50%;filter:drop-shadow(0 0 20px rgba(255,77,61,.25));animation:wave 6.5s ease-in-out infinite}
+.hero__waves span:nth-child(2){top:44px;border-top-color:rgba(40,215,255,.3);animation-delay:-1.8s}
+.hero__waves span:nth-child(3){top:88px;border-top-color:rgba(255,138,61,.26);animation-delay:-3.4s}
+@keyframes wave{0%,100%{transform:translateY(0) scaleX(1)}50%{transform:translateY(14px) scaleX(1.04)}}
+.pill{display:inline-block;margin:0 auto 26px;padding:8px 18px;border-radius:99px;border:1px solid rgba(255,77,61,.35);background:rgba(255,77,61,.07);color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.14em;box-shadow:inset 0 0 26px rgba(255,77,61,.1);animation:pillGlow 3s ease-in-out infinite}
+@keyframes pillGlow{0%,100%{box-shadow:inset 0 0 26px rgba(255,77,61,.1),0 0 0 rgba(255,77,61,0)}50%{box-shadow:inset 0 0 26px rgba(255,77,61,.16),0 0 24px rgba(255,77,61,.22)}}
+.hero h1{font-size:clamp(40px,7vw,76px);line-height:1.04;letter-spacing:-.04em;font-weight:800;max-width:900px;margin:0 auto 22px}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hchar{display:inline-block;opacity:0;transform:translateY(22px) rotate(3deg);filter:blur(6px);transition:opacity .55s ease,transform .55s cubic-bezier(.22,.9,.36,1),filter .55s ease}
+.hchar.in{opacity:1;transform:none;filter:blur(0)}
+.hero__sub{font-size:clamp(15px,2vw,18px);color:var(--muted);max-width:640px;margin:0 auto 34px}
+.hero__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero__checks{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}
+.check{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);font-size:12px;font-weight:800;color:#dfe3ea}
+.check svg{width:14px;height:14px;stroke:var(--green);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(86,240,168,.4))}
+.fade{opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.9,.36,1)}
+.fade.in{opacity:1;transform:none}
+
+/* ---------- MOCKUP ---------- */
+.mockup{position:relative;margin:64px auto 0;max-width:880px;background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.45);transition:transform .15s ease,border-color .3s,box-shadow .3s;transform-style:preserve-3d}
+.mockup::before{content:"";position:absolute;inset:-1px;background:linear-gradient(115deg,transparent 0 30%,rgba(255,255,255,.14) 45%,transparent 60%);translate:-120% 0;animation:sheen 6s ease-in-out infinite;pointer-events:none;z-index:3}
+@keyframes sheen{0%,55%{translate:-120% 0}80%,100%{translate:120% 0}}
+.mockup:hover{border-color:rgba(255,77,61,.3)}
+.mockup__bar{display:flex;align-items:center;gap:8px;padding:13px 18px;background:#1a1d25}
+.dot{width:12px;height:12px;border-radius:50%}
+.mockup__title{margin-left:12px;font-size:12px;color:#667}
+.live{margin-left:auto;font-size:11px;font-weight:800;color:var(--accent);animation:liveBlink 1.4s ease-in-out infinite}
+@keyframes liveBlink{0%,100%{opacity:1;text-shadow:0 0 12px rgba(255,77,61,.9)}50%{opacity:.4;text-shadow:none}}
+.mockup__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:26px;min-height:200px}
+@media(max-width:700px){.mockup__grid{grid-template-columns:1fr}}
+.mcard{position:relative;background:#0c0e13;border:1px solid var(--line);border-radius:12px;padding:16px;font-size:13px;color:var(--muted);text-align:left;overflow:hidden;transition:transform .25s,border-color .25s}
+.mcard:hover{transform:translateY(-3px);border-color:rgba(255,77,61,.35)}
+.mcard::after{content:"";position:absolute;left:16px;right:16px;bottom:11px;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--cyan),transparent);transform-origin:left;animation:signal 2.8s ease-in-out infinite}
+@keyframes signal{0%,100%{transform:scaleX(.18);opacity:.35}50%{transform:scaleX(1);opacity:.9}}
+.mtag{display:inline-block;margin-bottom:8px;padding:3px 9px;border-radius:6px;background:rgba(255,77,61,.15);color:var(--accent);font-size:10.5px;font-weight:800}
+.mcard strong{display:block;color:var(--ink);font-size:14px;margin-bottom:5px}
+.caret{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:2px;vertical-align:-2px;animation:blink .8s step-end infinite;box-shadow:0 0 8px rgba(40,215,255,.8)}
+@keyframes blink{50%{opacity:0}}
+.mwave{display:flex;align-items:flex-end;gap:3px;height:30px;margin-top:10px}
+.mwave span{width:5px;border-radius:3px;background:var(--accent);opacity:.75;animation:eq 1.1s ease-in-out infinite}
+.mwave span:nth-child(2){animation-delay:.1s}.mwave span:nth-child(3){animation-delay:.2s}.mwave span:nth-child(4){animation-delay:.3s}.mwave span:nth-child(5){animation-delay:.15s}.mwave span:nth-child(6){animation-delay:.25s}
+
+/* ---------- MARQUEE ---------- */
+.marquee{margin:80px 0 0;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.marquee::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.marquee__track{display:flex;gap:70px;width:max-content;animation:scrollX 26s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__track span{font-size:15px;font-weight:800;color:#565c68;letter-spacing:.06em;white-space:nowrap;display:flex;align-items:center;gap:9px;transition:color .3s}
+.marquee__track span:hover{color:var(--ink)}
+.marquee__track b{color:var(--accent);font-size:17px}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+
+/* ---------- PRODUCT SHOWCASE ---------- */
+.showcase{padding-top:86px;background:linear-gradient(180deg,rgba(20,23,31,.15),rgba(20,23,31,.42) 45%,rgba(12,14,19,0));border-top:1px solid rgba(255,255,255,.045)}
+.shotgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:920px){.shotgrid{grid-template-columns:1fr}.shot{max-width:680px;margin:0 auto}}
+.shot{position:relative}
+.shot__screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#080d16;border:1px solid rgba(80,110,150,.38);box-shadow:0 22px 54px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.025) inset}
+.shot__img{display:block;width:100%;height:100%;object-fit:cover}
+.shot__screen::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 72%,rgba(255,77,61,.12),transparent 28%),linear-gradient(120deg,rgba(40,215,255,.05),transparent 42%);pointer-events:none}
+.shot__screen::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 35%,rgba(255,255,255,.12) 48%,transparent 62%);translate:-135% 0;animation:sheen 7s ease-in-out infinite;pointer-events:none}
+.shot:nth-child(2) .shot__screen::after{animation-delay:-2s}.shot:nth-child(3) .shot__screen::after{animation-delay:-4s}
+.shot__top{height:22px;display:flex;align-items:center;gap:5px;padding:0 10px;background:#111827;border-bottom:1px solid rgba(255,255,255,.06)}
+.shot__top i{width:6px;height:6px;border-radius:50%;background:#475569}.shot__top i:nth-child(1){background:#ff5f56}.shot__top i:nth-child(2){background:#ffbd2e}.shot__top i:nth-child(3){background:#27c93f}
+.shot__app{position:absolute;inset:22px 0 0;display:grid;grid-template-columns:24% 1fr;background:#0b1220}
+.shot__side{padding:10px 8px;background:#101827;border-right:1px solid rgba(255,255,255,.06)}
+.shot__brand{display:flex;align-items:center;gap:6px;margin-bottom:12px;color:#dbeafe;font-size:8px;font-weight:900}
+.shot__badge{width:14px;height:14px;border-radius:4px;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.shot__nav{height:10px;border-radius:5px;background:#1e293b;margin:8px 0;opacity:.75}
+.shot__nav.on{background:rgba(40,215,255,.18);box-shadow:inset 2px 0 0 var(--cyan)}
+.shot__main{padding:11px;display:flex;flex-direction:column;gap:8px}
+.shot__head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.shot__title{height:13px;width:42%;border-radius:7px;background:#e5eefc}
+.shot__pill{height:13px;width:24%;border-radius:8px;background:rgba(255,77,61,.22);border:1px solid rgba(255,77,61,.32)}
+.shot__panels{display:grid;grid-template-columns:1.35fr .9fr;gap:8px;min-height:70px}
+.shot__panel{border-radius:8px;background:#111a2a;border:1px solid rgba(88,112,146,.28);padding:8px}
+.shot__label{height:6px;width:34%;border-radius:4px;background:#7dd3fc;margin-bottom:8px}
+.shot__line{height:7px;border-radius:5px;background:#2b3a50;margin:6px 0}.shot__line.sm{width:62%}.shot__line.md{width:78%}
+.shot__table{flex:1;border-radius:8px;background:#09111f;border:1px solid rgba(88,112,146,.22);padding:9px;display:flex;align-items:center;justify-content:center}
+.shot__empty{width:48px;height:48px;border-radius:50%;border:1px solid rgba(148,163,184,.25);display:grid;place-items:center;color:#64748b;font-size:18px}
+.shot__flow{position:absolute;left:30%;right:10%;top:28%;bottom:16%;border-radius:10px;background:rgba(15,23,42,.88);border:1px solid rgba(100,116,139,.35);display:grid;place-items:center}
+.flowline{display:flex;align-items:center;gap:14px}
+.flowbox{width:56px;height:36px;border-radius:8px;background:#1f2a3d;display:grid;place-items:center;color:#dbeafe;font-size:8px;font-weight:800}
+.flowbox.accent{background:#143752;color:#a5f3fc}
+.flowarrow{width:46px;height:1px;background:#94a3b8;position:relative}.flowarrow::after{content:"";position:absolute;right:-1px;top:-3px;border-left:7px solid #94a3b8;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.shot__modalbg{position:absolute;inset:22px 0 0;background:rgba(2,6,23,.72);backdrop-filter:blur(5px)}
+.shot__modal{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:58%;border-radius:10px;background:#111827;border:1px solid rgba(96,132,188,.5);box-shadow:0 20px 70px rgba(0,0,0,.55);padding:13px}
+.shot__modal h4{font-size:11px;margin-bottom:12px;color:#f8fafc}.shot__guide{height:8px;border-radius:4px;background:#314057;margin:7px 0}.shot__guide:nth-child(3){width:82%}.shot__guide:nth-child(4){width:68%}.shot__guide:nth-child(5){width:90%}
+.shot figcaption{text-align:center;color:#aab3c3;font-size:14px;line-height:1.45;margin-top:14px}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative;padding:96px 0 8px}
+.sec-title{text-align:center;font-size:clamp(28px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;position:relative;margin-bottom:10px}
+.sec-title::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%) scaleX(0);width:76px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 16px rgba(255,77,61,.55);transition:transform .8s cubic-bezier(.22,.9,.36,1) .2s}
+.sec-title.seen::after{transform:translateX(-50%) scaleX(1)}
+.sec-sub{text-align:center;color:var(--muted);margin:18px 0 48px;font-size:16px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.9,.36,1);transition-delay:var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:70px 0 0}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:var(--panel);padding:30px 16px;text-align:center;transition:background .3s}
+.stat:hover{background:#181c26}
+.stat b{display:block;font-size:38px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* ---------- FEATURES ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.grid3{grid-template-columns:1fr}}
+.fcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden;transition:transform .25s ease,border-color .25s,box-shadow .25s;background-image:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+.fcard::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(255,77,61,.6),rgba(40,215,255,.2),transparent 58%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .25s;pointer-events:none}
+.fcard:hover{transform:translateY(-5px);border-color:rgba(255,77,61,.4);box-shadow:0 24px 60px rgba(0,0,0,.32)}
+.fcard:hover::before{opacity:1}
+.fcard .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;background:linear-gradient(135deg,rgba(255,77,61,.95),rgba(255,138,61,.72));box-shadow:0 14px 34px rgba(255,77,61,.22);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.fcard:hover .ic{transform:scale(1.12) rotate(-6deg)}
+.fcard h3{margin:15px 0 6px;font-size:16.5px;font-weight:700}
+.fcard p{color:var(--muted);font-size:13.5px}
+
+/* ---------- STEPS ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:14px}
+@media(max-width:700px){.steps{grid-template-columns:1fr}}
+.step{text-align:center;padding:0 14px;position:relative}
+.step::after{content:"";position:absolute;left:64%;top:24px;width:72%;height:1px;background:linear-gradient(90deg,rgba(255,77,61,.5),transparent);opacity:.6}
+.step:last-child::after{display:none}
+.step__num{width:48px;height:48px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:19px;color:var(--accent);background:rgba(255,77,61,.13);border:1px solid rgba(255,77,61,.4);animation:ringPulse 2.8s ease-in-out infinite}
+@keyframes ringPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,77,61,.3)}50%{box-shadow:0 0 0 12px rgba(255,77,61,0)}}
+.step h3{font-size:16px;font-weight:700;margin-bottom:7px}
+.step p{color:var(--muted);font-size:13.5px}
+
+/* ---------- PRICING ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:14px}
+@media(max-width:860px){.plans{grid-template-columns:1fr}}
+.plan{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:34px 30px;transition:transform .3s cubic-bezier(.22,.9,.36,1),border-color .3s,box-shadow .3s;overflow:hidden}
+.plan:hover{transform:translateY(-7px);border-color:rgba(255,77,61,.35);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.plan--pro{border-color:var(--accent);box-shadow:0 0 55px rgba(255,77,61,.16)}
+.plan--pro::before{content:"PHỔ BIẾN NHẤT";position:absolute;top:18px;right:-38px;transform:rotate(38deg);background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;font-size:10px;font-weight:900;letter-spacing:.1em;padding:5px 44px;box-shadow:0 6px 18px rgba(255,77,61,.4)}
+.plan--biz{border-color:rgba(255,138,61,.45);background:linear-gradient(180deg,rgba(255,138,61,.08),var(--panel) 45%)}
+.plan h3{font-size:15px;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.plan .price{font-size:42px;font-weight:800;letter-spacing:-.03em;margin:12px 0 2px}
+.plan .price small{font-size:15px;color:var(--muted);font-weight:600}
+.plan ul{list-style:none;margin:22px 0 26px;display:grid;gap:11px}
+.plan li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#cfd3da}
+.plan li::before{content:"✓";color:var(--green);font-weight:900;text-shadow:0 0 10px rgba(86,240,168,.5)}
+.plan .btn{width:100%}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:10px;overflow:hidden;transition:border-color .25s}
+.faq details:hover{border-color:rgba(255,77,61,.3)}
+.faq details[open]{border-color:rgba(255,77,61,.4)}
+.faq summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;font-weight:400;color:var(--accent);transition:transform .3s cubic-bezier(.22,.9,.36,1);flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 22px 18px;color:var(--muted);font-size:13.5px;line-height:1.7}
+
+/* ---------- CTA / FOOTER ---------- */
+.bigcta{text-align:center;padding:100px 0 110px;position:relative}
+.bigcta::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:640px;height:340px;background:radial-gradient(ellipse,rgba(255,77,61,.16),transparent 68%);filter:blur(30px);pointer-events:none}
+.bigcta h2{font-size:clamp(30px,4.8vw,46px);font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
+.bigcta p{color:var(--muted);margin-bottom:32px}
+footer{border-top:1px solid var(--line);padding:36px 0 44px;color:var(--muted);font-size:13px}
+footer .frow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer a{transition:color .2s}
+footer a:hover{color:var(--ink)}
+
+.totop{position:fixed;right:20px;bottom:20px;z-index:600;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,77,61,.4);background:rgba(17,20,28,.88);color:#fff;font-size:19px;display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(14px);transition:all .25s ease;box-shadow:0 0 26px rgba(255,77,61,.18)}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{background:var(--accent);transform:translateY(-3px)}
+
+.ember{position:absolute;bottom:0;border-radius:50%;pointer-events:none;opacity:0;animation:emberUp linear infinite}
+@keyframes emberUp{0%{opacity:0;transform:translateY(0) scale(1)}12%{opacity:.9}80%{opacity:.45}100%{opacity:0;transform:translateY(-400px) translateX(var(--dx,20px)) scale(.35)}}
+
+/* Hiệu ứng luôn bật theo yêu cầu chủ trang (không tự tắt theo prefers-reduced-motion) */
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div style="text-align:center">
+    <div class="loader__eq"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="loader__txt">Verba Studio</div>
+  </div>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+<div class="spotlight" id="spotlight" style="opacity:0"></div>
+
+<div class="navwrap">
+  <nav class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="eqmini"><i></i><i></i><i></i></span>
+      Verba&nbsp;Studio
+    </a>
+    <div class="nav__links">
+      <a href="#showcase">Giao diện</a>
+      <a href="#features">Tính năng</a>
+      <a href="#steps">Cách dùng</a>
+      <a href="#pricing">Bảng giá</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn--fire" style="padding:10px 22px" href="#download">Tải miễn phí</a>
   </nav>
-</header>
+</div>
 
 <!-- HERO -->
-<section class="hero">
-  <span class="pill">DÀNH CHO NHÀ SÁNG TẠO & STREAMER</span>
-  <h1>Lên sóng <span>chuyên nghiệp</span><br>chỉ với một cú click</h1>
-  <p>Quay đa màn hình, camera PiP, phụ đề AI tiếng Việt, chroma key, đa nền tảng — và ghi mọi lời nói thành transcript tự động. Verba Studio là phòng thu của bạn.</p>
-  <div class="cta">
-    <a class="btn" href="#download">⬇ Tải miễn phí — Windows</a>
-    <a class="btn ghost" href="#features">Xem tính năng</a>
-  </div>
-  <div class="bar">
-    <i style="animation-delay:0s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.2s"></i>
-    <i style="animation-delay:.3s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.25s"></i>
-    <i style="animation-delay:.05s"></i>
-  </div>
-</section>
-
-<!-- APP MOCKUP -->
-<div class="mockup">
-  <div class="mockup-bar">
-    <div class="mockup-dot" style="background:#FF5F56"></div>
-    <div class="mockup-dot" style="background:#FFBD2E"></div>
-    <div class="mockup-dot" style="background:#27C93F"></div>
-    <span style="margin-left:12px;font-size:12px;color:#555">Verba Studio — Đang ghi · 00:12:34</span>
-    <span style="margin-left:auto;font-size:11px;color:#FF4D3D;font-weight:700">● LIVE</span>
-  </div>
-  <div class="mockup-screen">
-    <div class="m-card">
-      <div class="m-tag">ĐANG PHÁT</div>
-      <strong>YouTube · Facebook</strong>
-      <div style="font-size:12px">1080p · 4500kbps</div>
-      <div style="font-size:12px;margin-top:6px">👥 1,247 đang xem</div>
+<header class="hero" id="top">
+  <div class="hero__waves"><span></span><span></span><span></span></div>
+  <div class="wrap">
+    <span class="pill">🔴 DÀNH CHO NHÀ SÁNG TẠO &amp; STREAMER</span>
+    <h1 id="h1">Lên sóng <span class="grad">chuyên nghiệp</span>
+chỉ với một cú click</h1>
+    <p class="hero__sub fade" data-delay="900">Quay đa màn hình, camera PiP, phụ đề AI tiếng Việt, chroma key, live đa nền tảng, chat live nổi riêng và hiệu ứng Like &amp; Đăng ký tự chạy theo giọng nói hoặc bình luận. Verba Studio là phòng thu của bạn.</p>
+    <div class="hero__cta fade" data-delay="1150">
+      <a class="btn btn--ghost" href="#features">Khám phá tính năng</a>
     </div>
-    <div class="m-card">
-      <div class="m-tag">AI TRANSCRIPT</div>
-      <strong>Phụ đề trực tiếp</strong>
-      <div style="font-size:12px;line-height:1.6">"Hôm nay chúng ta sẽ tìm hiểu về..."</div>
-      <div class="m-wave">
-        <span style="height:8px"></span><span style="height:20px"></span><span style="height:14px"></span>
-        <span style="height:28px"></span><span style="height:10px"></span><span style="height:22px"></span>
+    <div class="hero__checks fade" data-delay="1400">
+      <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Live đa nền tảng</span>
+      <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>AI transcript tiếng Việt</span>
+      <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Chat live nổi riêng</span>
+    </div>
+
+    <!-- MOCKUP -->
+    <div class="mockup fade" data-delay="1600" id="mockup">
+      <div class="mockup__bar">
+        <span class="dot" style="background:#FF5F56"></span>
+        <span class="dot" style="background:#FFBD2E"></span>
+        <span class="dot" style="background:#27C93F"></span>
+        <span class="mockup__title">Verba Studio — Đang ghi · <span id="rectime">00:12:34</span></span>
+        <span class="live">● LIVE</span>
       </div>
-    </div>
-    <div class="m-card">
-      <div class="m-tag">QUAY MÀN HÌNH</div>
-      <strong>Màn hình 1 + 2</strong>
-      <div style="font-size:12px">Camera PiP · 1920×1080</div>
-      <div style="font-size:12px;margin-top:6px">🔴 Rec · 234 MB</div>
-    </div>
-  </div>
-</div>
-
-
-<!-- PRODUCT SCREENSHOTS - book add-on -->
-<section id="product-images" class="book-showcase">
-  <div class="book-head">
-    <div>
-      <h2>Ảnh giao diện app</h2>
-      <p>Bấm trang bên phải để xem tiếp, bấm trang bên trái để quay lại. Ảnh và chức năng hiển thị trực tiếp trong sách.</p>
-    </div>
-    <a href="#features">Xem tính năng</a>
-  </div>
-  <div class="book-frame">
-    <div class="book-ui">
-      <input class="choice" type="radio" name="spread" id="spread-1" checked>
-      <input class="choice" type="radio" name="spread" id="spread-2">
-      <input class="choice" type="radio" name="spread" id="spread-3">
-      <div class="book">
-        <div class="cover-shadow"></div>
-        <div class="flip-page" aria-hidden="true"></div>
-        <div class="spread s1">
-          <article class="page left">
-            <div class="page-num">Trang 01</div>
-            <h3>Giao diện app</h3>
-            <p>Khách xem trực tiếp giao diện thật của Verba Studio ngay trong trang, không popup và không ảnh minh họa giả.</p>
-            <div class="book-shot"><img src="/assets/app-original-main.png" alt="Giao diện chính Verba Studio"></div>
-          </article>
-          <label class="page right page-turn" for="spread-2" data-target="spread-2" data-direction="forward" title="Bấm để sang trang tiếp">
-            <div class="page-num">Trang 02</div>
-            <h3>Chức năng tổng quan</h3>
-            <div class="book-features">
-              <div class="book-feature"><b>1</b><div><strong>Giao diện rõ ràng</strong><span>Khách thấy vùng làm việc, lịch sử phiên và thao tác chính.</span></div></div>
-              <div class="book-feature"><b>2</b><div><strong>Quản lý phiên làm việc</strong><span>Các phiên ghi/làm việc được lưu lại để mở lại khi cần.</span></div></div>
-              <div class="book-feature"><b>3</b><div><strong>Trải nghiệm thật trước khi tải</strong><span>Website giới thiệu bằng ảnh thật trong app.</span></div></div>
-            </div>
-            <div class="mini-grid">
-              <div class="mini"><img src="/assets/app-original-center.png" alt=""><span>Khu vực làm việc</span></div>
-              <div class="mini"><img src="/assets/app-original-actions.png" alt=""><span>Thao tác nhanh</span></div>
-            </div>
-            <div class="turn-hint">Bấm để xem trang tiếp</div>
-          </label>
+      <div class="mockup__grid">
+        <div class="mcard">
+          <span class="mtag">ĐANG PHÁT</span>
+          <strong>YouTube · Facebook · TikTok · Twitch</strong>
+          <div style="font-size:12px">1080p · 4500kbps</div>
+          <div style="font-size:12px;margin-top:6px" id="viewers">👥 1.247 đang xem</div>
         </div>
-        <div class="spread s2">
-          <label class="page left page-back" for="spread-1" data-target="spread-1" data-direction="back" title="Bấm để quay lại trang trước">
-            <div class="page-num">Trang 03</div>
-            <h3>Khu vực làm việc</h3>
-            <p>Vùng làm việc trung tâm giúp người dùng bắt đầu thao tác nhanh sau khi mở app.</p>
-            <div class="book-shot"><img src="/assets/app-original-center.png" alt="Khu vực làm việc Verba Studio"></div>
-            <div class="back-hint">Bấm để quay lại</div>
-          </label>
-          <label class="page right page-turn" for="spread-3" data-target="spread-3" data-direction="forward" title="Bấm để sang trang tiếp">
-            <div class="page-num">Trang 04</div>
-            <h3>Chức năng khu vực làm việc</h3>
-            <div class="book-features">
-              <div class="book-feature"><b>1</b><div><strong>Bắt đầu nhanh</strong><span>Các lựa chọn chính nằm ngay giữa màn hình.</span></div></div>
-              <div class="book-feature"><b>2</b><div><strong>Đồng bộ quy trình</strong><span>Phù hợp mở phiên, chọn tác vụ và xử lý trong cùng một màn hình.</span></div></div>
-              <div class="book-feature"><b>3</b><div><strong>Dễ hướng dẫn khách</strong><span>Khách nhìn ảnh là hiểu app hoạt động thế nào.</span></div></div>
-            </div>
-            <div class="turn-hint">Bấm để xem trang tiếp</div>
-          </label>
+        <div class="mcard">
+          <span class="mtag">AI TRANSCRIPT</span>
+          <strong>Phụ đề trực tiếp</strong>
+          <div style="font-size:12px;line-height:1.6;min-height:42px"><span id="typing"></span><span class="caret"></span></div>
+          <div class="mwave">
+            <span style="height:8px"></span><span style="height:20px"></span><span style="height:14px"></span>
+            <span style="height:26px"></span><span style="height:10px"></span><span style="height:22px"></span>
+          </div>
         </div>
-        <div class="spread s3">
-          <label class="page left page-back" for="spread-2" data-target="spread-2" data-direction="back" title="Bấm để quay lại trang trước">
-            <div class="page-num">Trang 05</div>
-            <h3>Thao tác và lịch sử</h3>
-            <p>Khách xem trực tiếp nút thao tác và danh sách phiên ngay trong sách.</p>
-            <div class="mini-grid">
-              <div class="mini"><img src="/assets/app-original-actions.png" alt=""><span>Thao tác chính</span></div>
-              <div class="mini"><img src="/assets/app-original-sidebar.png" alt=""><span>Lịch sử phiên</span></div>
-            </div>
-            <div class="back-hint">Bấm để quay lại</div>
-          </label>
-          <label class="page right page-turn" for="spread-1" data-target="spread-1" data-direction="forward" title="Bấm để quay lại đầu">
-            <div class="page-num">Trang 06</div>
-            <h3>Chức năng thao tác và lịch sử</h3>
-            <div class="book-features">
-              <div class="book-feature"><b>1</b><div><strong>Thao tác nhanh</strong><span>Người dùng nhìn thấy các nút chính và hiểu phải bấm ở đâu.</span></div></div>
-              <div class="book-feature"><b>2</b><div><strong>Theo dõi lịch sử phiên</strong><span>Các phiên cũ hiển thị thành danh sách để quay lại nhanh.</span></div></div>
-              <div class="book-feature"><b>3</b><div><strong>Sẵn sàng bổ sung ảnh mới</strong><span>Có thể thêm trang Google sync, chất lượng hoặc kết quả ghi khi có ảnh mới.</span></div></div>
-            </div>
-            <div class="turn-hint">Bấm để quay lại đầu</div>
-          </label>
+        <div class="mcard">
+          <span class="mtag">QUAY MÀN HÌNH</span>
+          <strong>Màn hình 1 + 2</strong>
+          <div style="font-size:12px">Camera PiP · 1920×1080</div>
+          <div style="font-size:12px;margin-top:6px">🔴 Rec · <span id="recsize">234</span> MB</div>
         </div>
       </div>
     </div>
+
+    <!-- STATS -->
+    <div class="stats rv">
+      <div class="stat"><b data-count="4">0</b><span>Nền tảng live cùng lúc</span></div>
+      <div class="stat"><b data-count="1440" data-suffix="p">0</b><span>Chất lượng tối đa 2K</span></div>
+      <div class="stat"><b data-count="3">0</b><span>AI providers</span></div>
+      <div class="stat"><b data-count="0" data-suffix="đ">0</b><span>Bắt đầu miễn phí</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="mtrack">
+    <span><b>▶</b> YouTube Live</span>
+    <span><b>ⓕ</b> Facebook Live</span>
+    <span><b>♪</b> TikTok Live</span>
+    <span><b>◉</b> Twitch</span>
+    <span><b>✦</b> AI Transcript tiếng Việt</span>
+    <span><b>⌘</b> Stream Deck AJAZZ</span>
+    <span><b>💬</b> Chat live nổi</span>
+    <span><b>🎬</b> Chroma Key</span>
+  </div>
+</div>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="showcase" id="showcase">
+  <div class="wrap">
+    <h2 class="sec-title">Giao diện sạch, dễ kiểm soát</h2>
+    <p class="sec-sub">Ảnh minh họa dùng dữ liệu demo, không chứa khuôn mặt, desktop cá nhân hay tài liệu riêng.</p>
+    <div class="shotgrid">
+      <figure class="shot rv">
+        <div class="shot__screen">
+          <img class="shot__img" src="assets/showcase/green-screen-clean.svg" alt="Clean Verba Studio green screen tool preview">
+        </div>
+        <figcaption>Chroma key / xóa phông xanh cho video creator</figcaption>
+      </figure>
+      <figure class="shot rv" style="--d:90ms">
+        <div class="shot__screen">
+          <img class="shot__img" src="assets/showcase/render-batch-clean.svg" alt="Clean Verba Studio H264 H265 render tool preview">
+        </div>
+        <figcaption>Render H264 / H265 theo lô, gọn cho workflow bán hàng</figcaption>
+      </figure>
+      <figure class="shot rv" style="--d:180ms">
+        <div class="shot__screen">
+          <img class="shot__img" src="assets/showcase/built-in-guide-clean.svg" alt="Clean Verba Studio built-in guide preview">
+        </div>
+        <figcaption>Hướng dẫn từng công cụ, không cần xem tài liệu ngoài</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="num">4</div><div class="lbl">Nền tảng live</div></div>
-  <div class="stat"><div class="num">1440p</div><div class="lbl">Tối đa 2K</div></div>
-  <div class="stat"><div class="num">3</div><div class="lbl">AI providers</div></div>
-  <div class="stat"><div class="num">0đ</div><div class="lbl">Bắt đầu miễn phí</div></div>
-</div>
 
 <!-- FEATURES -->
 <section id="features">
-  <h2 class="sec-title">Phòng thu trong một app</h2>
-  <p class="sec-sub">Mọi công cụ pro, không cần cài OBS hay phần mềm thứ ba.</p>
-  <div class="grid">
-    <div class="card">
-      <div class="ic">📡</div>
-      <h3>Đa nền tảng cùng lúc</h3>
-      <p>Live YouTube · Facebook · Twitch · TikTok cùng một lúc. Hỗ trợ khung dọc 9:16 cho Reels & Shorts.</p>
-    </div>
-    <div class="card">
-      <div class="ic">🖥️</div>
-      <h3>Quay đa màn hình</h3>
-      <p>Capture tất cả màn hình, tự ghép thành layout. Camera PiP góc dưới, tùy chọn vị trí và kích thước.</p>
-    </div>
-    <div class="card">
-      <div class="ic">🤖</div>
-      <h3>AI Transcript tiếng Việt</h3>
-      <p>Phụ đề real-time cháy thẳng vào video. Hỗ trợ Kyma, OpenAI, Gemini — tự fallback khi lỗi.</p>
-    </div>
-    <div class="card">
-      <div class="ic">📝</div>
-      <h3>Tóm tắt cuộc họp tự động</h3>
-      <p>Ghi âm cuộc họp, AI tạo bản tóm tắt và action items. Lưu transcript đầy đủ để tra cứu sau.</p>
-    </div>
-    <div class="card">
-      <div class="ic">🟢</div>
-      <h3>Chroma key & phụ đề</h3>
-      <p>Xóa phông xanh thời gian thực. Phụ đề AI tiếng Việt overlay trực tiếp trên stream.</p>
-    </div>
-    <div class="card">
-      <div class="ic">📶</div>
-      <h3>Sức khỏe stream</h3>
-      <p>Monitor bitrate/FPS, tự kết nối lại khi rớt mạng. Màn chờ, bảng tên và cảnh báo tức thì.</p>
-    </div>
-    <div class="card">
-      <div class="ic">🎛️</div>
-      <h3>Stream Deck AJAZZ</h3>
-      <p>Điều khiển scene, camera, record/live bằng phím tắt hoặc Stream Deck qua cổng 37219.</p>
-    </div>
-    <div class="card">
-      <div class="ic">☁️</div>
-      <h3>Lưu trữ đám mây</h3>
-      <p>Video và transcript đồng bộ cloud. Truy cập lại bất cứ lúc nào, từ bất kỳ thiết bị nào.</p>
-    </div>
-    <div class="card">
-      <div class="ic">🔔</div>
-      <h3>Nhắc họp thông minh</h3>
-      <p>Thông báo trước 1 phút khi cuộc họp sắp bắt đầu. Một click để mở note và bắt đầu ghi.</p>
+  <div class="wrap">
+    <h2 class="sec-title">Phòng thu trong một app</h2>
+    <p class="sec-sub">Mọi công cụ pro, không cần cài OBS hay phần mềm thứ ba.</p>
+    <div class="grid3">
+      <div class="fcard rv"><div class="ic">📡</div><h3>Đa nền tảng cùng lúc</h3><p>Live YouTube · Facebook · Twitch · TikTok cùng một lúc. Hỗ trợ khung dọc 9:16 cho Reels &amp; Shorts.</p></div>
+      <div class="fcard rv"><div class="ic">🖥️</div><h3>Quay đa màn hình</h3><p>Capture tất cả màn hình, tự ghép thành layout. Nhận thêm camera, capture card hoặc điện thoại làm nguồn phát.</p></div>
+      <div class="fcard rv"><div class="ic">🎙️</div><h3>AI Transcript tiếng Việt</h3><p>Phụ đề real-time cháy thẳng vào video. Hỗ trợ Kyma, OpenAI, Gemini — tự fallback khi lỗi.</p></div>
+      <div class="fcard rv"><div class="ic">📝</div><h3>Tóm tắt cuộc họp tự động</h3><p>Ghi âm cuộc họp, AI tạo bản tóm tắt và action items. Lưu transcript đầy đủ để tra cứu sau.</p></div>
+      <div class="fcard rv"><div class="ic">🪄</div><h3>Chroma key &amp; phụ đề</h3><p>Xóa phông xanh thời gian thực. Phụ đề AI tiếng Việt overlay trực tiếp trên stream.</p></div>
+      <div class="fcard rv"><div class="ic">🔎</div><h3>Zoom &amp; con trỏ hướng dẫn</h3><p>Phóng to vùng click chuột, làm nổi con trỏ bằng vòng tròn, glow hoặc spotlight để người xem theo dõi thao tác dễ hơn.</p></div>
+      <div class="fcard rv"><div class="ic">📈</div><h3>Sức khỏe stream</h3><p>Monitor bitrate/FPS, tự kết nối lại khi rớt mạng. Màn chờ, bảng tên, lọc tiếng ồn và cảnh báo tức thì.</p></div>
+      <div class="fcard rv"><div class="ic">🎛️</div><h3>Stream Deck AJAZZ</h3><p>Điều khiển scene, camera, record/live bằng phím tắt hoặc Stream Deck qua cổng 37219.</p></div>
+      <div class="fcard rv"><div class="ic">💬</div><h3>Chat live nổi riêng</h3><p>Tự nhận YouTube Live khi có URL/video ID và API key. Cửa sổ chat nổi trên desktop, bình luận dài tự xuống dòng để đọc trọn nội dung.</p></div>
+      <div class="fcard rv"><div class="ic">👍</div><h3>Auto Like &amp; Đăng ký</h3><p>Nói hoặc nhận bình luận có từ khóa subscribe, sub, đăng ký, like và đăng ký — hiệu ứng logo kênh + nút ĐĂNG KÝ tự hiện trên video.</p></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section>
-  <h2 class="sec-title">Dùng trong 3 bước</h2>
-  <p class="sec-sub">Không cần cấu hình phức tạp, không cần OBS.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Tải & cài đặt</h3>
-      <p>Tải file .exe, cài trong 30 giây. Đăng nhập bằng Google — xong.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Chọn scene & nền tảng</h3>
-      <p>Chọn màn hình, bật camera, dán Stream Key của YouTube/TikTok vào.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Bấm Live — xong!</h3>
-      <p>AI phụ đề tự động, stream đến 4 nền tảng, transcript lưu lại tự động.</p>
-    </div>
-  </div>
-</section>
-
-<!-- EARLY ACCESS -->
-<section>
-  <div class="dl-box" style="margin-bottom:80px;background:linear-gradient(135deg,rgba(255,77,61,.08),rgba(255,138,61,.05));border-color:rgba(255,77,61,.3)">
-    <span class="pill" style="margin-bottom:16px">ĐANG MỞ EARLY ACCESS</span>
-    <h2 style="font-size:32px">Tham gia ngay — miễn phí</h2>
-    <p style="max-width:500px;margin:12px auto 28px">Verba Studio đang trong giai đoạn ra mắt. Tải về dùng thử miễn phí, phản hồi của bạn giúp chúng tôi hoàn thiện sản phẩm.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a class="btn" href="#download">⬇ Tải miễn phí ngay</a>
-      <a class="btn ghost" href="mailto:support@verbar.io">Góp ý & báo lỗi</a>
-    </div>
-    <div style="margin-top:24px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap">
-      <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--accent)">✓</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Không cần thẻ tín dụng</div></div>
-      <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--accent)">✓</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Cài đặt trong 30 giây</div></div>
-      <div style="text-align:center"><div style="font-size:22px;font-weight:800;color:var(--accent)">✓</div><div style="font-size:12px;color:var(--muted);margin-top:4px">Hỗ trợ trực tiếp từ team</div></div>
+<!-- STEPS -->
+<section id="steps">
+  <div class="wrap">
+    <h2 class="sec-title">Dùng trong 3 bước</h2>
+    <p class="sec-sub">Không cần kiến thức kỹ thuật — cài xong là lên sóng.</p>
+    <div class="steps">
+      <div class="step rv"><div class="step__num">1</div><h3>Tải &amp; cài đặt</h3><p>Tải Verba Studio cho Windows 10/11, đăng nhập bằng Google trong 10 giây.</p></div>
+      <div class="step rv"><div class="step__num">2</div><h3>Chọn scene &amp; nền tảng</h3><p>Chọn màn hình, camera, nền tảng muốn live. Dán stream key — được mã hóa an toàn.</p></div>
+      <div class="step rv"><div class="step__num">3</div><h3>Bấm Live</h3><p>Một cú click để lên sóng mọi nền tảng. AI ghi transcript, chat nổi và hiệu ứng subscribe tự chạy trong lúc bạn nói.</p></div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-  <h2 class="sec-title">Giá đơn giản, minh bạch</h2>
-  <p class="sec-sub">Bắt đầu miễn phí, nâng cấp khi bạn sẵn sàng lên chuyên nghiệp.</p>
-  <div class="price">
-    <div class="plan">
-      <h3>Free</h3>
-      <div class="amt">0đ</div>
-      <ul>
-        <li>Quay & ghi không giới hạn</li>
-        <li>Live 720p một nền tảng</li>
-        <li>AI transcript cơ bản</li>
-        <li>Tóm tắt cuộc họp (5/tháng)</li>
-        <li>Lưu trên máy</li>
-      </ul>
-      <a class="btn ghost" href="#download" style="display:block;text-align:center">Tải miễn phí</a>
-    </div>
-    <div class="plan pro">
-      <div class="plan-badge">PHỔ BIẾN NHẤT</div>
-      <h3>Pro</h3>
-      <div class="amt">199k<small>/tháng</small></div>
-      <ul>
-        <li>Live 1080p/2K đa nền tảng cùng lúc</li>
-        <li>AI transcript không giới hạn</li>
-        <li>Tóm tắt & action items tự động</li>
-        <li>Chroma key & phụ đề nâng cao</li>
-        <li>Lưu trữ đám mây + báo cáo</li>
-        <li>Stream Deck AJAZZ support</li>
-        <li>Ưu tiên hỗ trợ kỹ thuật</li>
-      </ul>
-      <a class="btn" href="#" style="display:block;text-align:center">Nâng cấp Pro</a>
+  <div class="wrap">
+    <h2 class="sec-title">Bảng giá đơn giản</h2>
+    <p class="sec-sub">Bắt đầu miễn phí — nâng cấp khi kênh của bạn lớn lên.</p>
+    <div class="plans">
+      <div class="plan rv">
+        <h3>Free</h3>
+        <div class="price">0đ</div>
+        <ul>
+          <li>Quay + live 720p, 1 nền tảng</li>
+          <li>Thời gian ghi không giới hạn</li>
+          <li>AI transcript cơ bản</li>
+          <li>Không cần thẻ tín dụng</li>
+        </ul>
+        <a class="btn btn--ghost" href="#download">Tải miễn phí</a>
+      </div>
+      <div class="plan plan--pro rv">
+        <h3 style="color:var(--accent)">Pro</h3>
+        <div class="price">199k<small>/tháng</small></div>
+        <ul>
+          <li>Live 1080p / 2K đa nền tảng cùng lúc</li>
+          <li>AI transcript + tóm tắt không giới hạn</li>
+          <li>Chroma key, phụ đề overlay</li>
+          <li>Chat live nổi + hiệu ứng subscribe</li>
+          <li>Hỗ trợ ưu tiên</li>
+        </ul>
+        <a class="btn btn--fire" href="https://verbar.io/checkout?plan=Pro">Nâng cấp Pro</a>
+      </div>
+      <div class="plan plan--biz rv">
+        <h3 style="color:var(--accent2)">Business</h3>
+        <div class="price">Tùy chỉnh</div>
+        <ul>
+          <li>Mọi tính năng Pro</li>
+          <li>Nhiều máy / nhiều tài khoản</li>
+          <li>Triển khai theo doanh nghiệp</li>
+          <li>Hỗ trợ riêng 1-1</li>
+        </ul>
+        <a class="btn btn--ghost" href="https://verbar.io/checkout?plan=Business">Liên hệ Order</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-  <h2 class="sec-title">Câu hỏi thường gặp</h2>
-  <p class="sec-sub">Không thấy câu trả lời? Nhắn chúng tôi.</p>
-  <div class="faq">
-    <div class="faq-item"><div class="faq-q">Verba Studio chạy trên hệ điều hành nào?</div><div class="faq-a">Hiện tại hỗ trợ Windows 10/11 (64-bit). Phiên bản macOS đang được phát triển.</div></div>
-    <div class="faq-item"><div class="faq-q">Gói Free có giới hạn thời gian quay không?</div><div class="faq-a">Không. Gói Free cho phép quay và ghi không giới hạn thời gian. Giới hạn chỉ ở độ phân giải live (720p) và số lần tóm tắt AI (5 lần/tháng).</div></div>
-    <div class="faq-item"><div class="faq-q">AI transcript hỗ trợ tiếng gì?</div><div class="faq-a">Tối ưu cho tiếng Việt. Cũng hỗ trợ tiếng Anh và nhiều ngôn ngữ khác thông qua Whisper AI và Gemini.</div></div>
-    <div class="faq-item"><div class="faq-q">Có cần OBS hay phần mềm nào khác không?</div><div class="faq-a">Không cần. Verba Studio là ứng dụng độc lập, tích hợp đủ mọi tính năng từ capture, encode đến stream.</div></div>
-    <div class="faq-item"><div class="faq-q">Stream Key lưu ở đâu, có an toàn không?</div><div class="faq-a">Stream Key được mã hóa và lưu trên máy tính của bạn. Chúng tôi không lưu trên server.</div></div>
-    <div class="faq-item"><div class="faq-q">Có thể hủy Pro bất cứ lúc nào không?</div><div class="faq-a">Có. Không ràng buộc hợp đồng. Hủy bất cứ lúc nào, tài khoản vẫn dùng Pro đến hết kỳ thanh toán.</div></div>
-  </div>
-</section>
-
-<!-- DOWNLOAD CTA -->
-<section id="download">
-  <div class="dl-box">
-    <h2>Bắt đầu miễn phí ngay hôm nay</h2>
-    <p>Tải về và live stream chuyên nghiệp trong vòng 5 phút.</p>
-    <a class="btn" href="#" style="font-size:16px;padding:14px 32px">⬇ Tải Verba Studio — Windows</a>
-    <div class="dl-meta">Windows 10/11 · 64-bit · ~85 MB · Cập nhật tự động</div>
-  </div>
-</section>
-
-</div><!-- /wrap -->
-
-<!-- FOOTER -->
-<footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          Verba Studio
-          <svg class="logo-wave" viewBox="0 0 64 64" aria-hidden="true"><g fill="currentColor"><rect x="9" y="27" width="5" height="10" rx="2.5"/><rect x="17" y="21" width="5" height="22" rx="2.5"/><rect x="25" y="15" width="5" height="34" rx="2.5"/><rect x="33" y="21" width="5" height="22" rx="2.5"/><rect x="41" y="25" width="5" height="14" rx="2.5"/><rect x="49" y="28" width="5" height="8" rx="2.5"/></g></svg>
-        </div>
-        <div class="footer-desc">Phòng thu chuyên nghiệp cho streamer và creator Việt Nam. Lên sóng đa nền tảng, AI transcript tiếng Việt, tóm tắt cuộc họp tự động.</div>
-      </div>
-      <div class="footer-col">
-        <h4>Sản phẩm</h4>
-        <a href="#features">Tính năng</a>
-        <a href="#pricing">Bảng giá</a>
-        <a href="#download">Tải về</a>
-        <a href="#">Changelog</a>
-      </div>
-      <div class="footer-col">
-        <h4>Hỗ trợ</h4>
-        <a href="#faq">FAQ</a>
-        <a href="mailto:support@verbar.io">Liên hệ</a>
-        <a href="#">Hướng dẫn sử dụng</a>
-        <a href="#">Báo lỗi</a>
-      </div>
-      <div class="footer-col">
-        <h4>Pháp lý</h4>
-        <a href="#">Điều khoản dịch vụ</a>
-        <a href="#">Chính sách bảo mật</a>
-        <a href="#">Cookie</a>
-      </div>
+    <h2 class="sec-title">Câu hỏi thường gặp</h2>
+    <p class="sec-sub">Chưa rõ điều gì? Có thể câu trả lời ở ngay đây.</p>
+    <div class="faq">
+      <details class="rv"><summary>Verba Studio chạy trên hệ điều hành nào?</summary><div class="ans">Hiện hỗ trợ Windows 10/11 (64-bit). Bộ đóng gói macOS và Linux đã được chuẩn bị trong app, bản phát hành công khai sẽ cập nhật sau khi kiểm thử đủ.</div></details>
+      <details class="rv"><summary>Bản Free có giới hạn thời gian ghi không?</summary><div class="ans">Không. Bản Free ghi không giới hạn thời lượng — chỉ giới hạn độ phân giải 720p và live 1 nền tảng.</div></details>
+      <details class="rv"><summary>AI transcript hỗ trợ tiếng Việt tốt không?</summary><div class="ans">Có — engine được tối ưu riêng cho tiếng Việt, hỗ trợ nhiều AI provider (Kyma, OpenAI, Gemini) và tự chuyển khi một provider lỗi.</div></details>
+      <details class="rv"><summary>Chat live có hiện khi tôi ẩn panel trong app không?</summary><div class="ans">Có. Chat YouTube vẫn được monitor ở nền và có thể mở cửa sổ nổi riêng trên desktop để đọc bình luận dài, không bị rút gọn bằng dấu ba chấm.</div></details>
+      <details class="rv"><summary>Tôi có cần cài OBS không?</summary><div class="ans">Không cần. Verba Studio là công cụ tất-cả-trong-một: quay, live, phụ đề, chroma key đều có sẵn.</div></details>
+      <details class="rv"><summary>Stream key của tôi có an toàn không?</summary><div class="ans">Stream key được mã hóa và chỉ lưu trên máy của bạn. Chúng tôi không thể đọc được key của bạn.</div></details>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Verba Studio · Mọi quyền được bảo lưu</span>
-      <div class="social">
-        <a href="https://www.facebook.com/ducserving" target="_blank" title="Facebook">f</a>
-        <a href="https://www.youtube.com/@ducdg2" target="_blank" title="YouTube">▶</a>
-        <a href="https://www.tiktok.com/@hoangvanduc10199" target="_blank" title="TikTok">♪</a>
-        <a href="#" title="Zalo">Z</a>
-      </div>
-    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<div class="bigcta" id="download">
+  <div class="wrap rv">
+    <h2>Download <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">Verba Studio</span></h2>
+    <p>Tải bản Windows mới nhất tại đây — không cần thẻ, không giới hạn thời gian ghi.</p>
+    <a class="btn btn--fire" style="padding:16px 40px;font-size:16px" href="https://github.com/Ducpt88/verba-studio/releases/download/v1.0.5/Verba-Studio-Windows-x64-20260708-2144.zip">⬇ Tải Verba Studio miễn phí</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap frow">
+    <span>© 2026 Verba Studio · Mọi quyền được bảo lưu</span>
+    <span style="display:flex;gap:20px">
+      <a href="https://verbar.io/#features">Tính năng</a>
+      <a href="https://verbar.io/#pricing">Bảng giá</a>
+      <a href="https://verbar.io/#faq">FAQ</a>
+      <a href="https://verbar.io/#download">Tải về</a>
+    </span>
   </div>
 </footer>
 
+<button class="totop" id="totop" aria-label="Lên đầu trang">↑</button>
+
 <script>
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.querySelector('.faq-q').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+(function(){
+'use strict';
+var reduced = false; /* luôn bật hiệu ứng */
+
+/* Preloader */
+addEventListener('load', function(){ setTimeout(function(){ document.getElementById('loader').classList.add('done'); start(); }, reduced ? 0 : 600); });
+setTimeout(function(){ document.getElementById('loader').classList.add('done'); start(); }, 2600); /* chốt an toàn */
+
+var started = false;
+function start(){
+  if (started) return; started = true;
+
+  /* Hero H1: tách ký tự bay vào (giữ nguyên span gradient) */
+  var h1 = document.getElementById('h1'), seq = [];
+  Array.prototype.slice.call(h1.childNodes).forEach(function(node){
+    if (node.nodeType === 3) {
+      var frag = document.createDocumentFragment();
+      node.textContent.split('').forEach(function(ch){
+        if (ch === '\n') { frag.appendChild(document.createElement('br')); return; }
+        var s = document.createElement('span'); s.className = 'hchar';
+        s.textContent = ch === ' ' ? ' ' : ch;
+        frag.appendChild(s); seq.push(s);
+      });
+      h1.replaceChild(frag, node);
+    } else if (node.nodeType === 1) { node.classList.add('hchar'); seq.push(node); }
   });
-});
+  seq.forEach(function(el, i){ setTimeout(function(){ el.classList.add('in'); }, 200 + i * 28); });
 
-(() => {
-  const root = document.querySelector('#product-images');
-  if (!root) return;
+  /* Fade-in theo delay */
+  document.querySelectorAll('.fade').forEach(function(el){
+    setTimeout(function(){ el.classList.add('in'); }, +el.dataset.delay || 0);
+  });
+}
 
-  const book = root.querySelector('.book');
-  const flipSheet = root.querySelector('.flip-page');
-  const radios = new Map([...root.querySelectorAll('.choice')].map(input => [input.id, input]));
-  let flipping = false;
+/* Scroll progress + nav glass + nút lên đầu */
+var progress = document.getElementById('progress'), nav = document.getElementById('nav'), totop = document.getElementById('totop');
+function onScroll(){
+  var h = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%';
+  nav.classList.toggle('glass', scrollY > 30);
+  totop.classList.toggle('show', scrollY > 500);
+}
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+totop.addEventListener('click', function(){ scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  root.querySelectorAll('.page-turn, .page-back').forEach(page => {
-    page.addEventListener('click', event => {
-      event.preventDefault();
-      if (flipping) return;
+/* Reveal khi cuộn tới + stagger theo vị trí trong nhóm */
+var rvs = document.querySelectorAll('.rv');
+rvs.forEach(function(el, i){ el.style.setProperty('--d', (i % 3) * 90 + 'ms'); });
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  rvs.forEach(function(el){ io.observe(el); });
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('seen'); io2.unobserve(e.target); } });
+  }, { threshold: .6 });
+  document.querySelectorAll('.sec-title').forEach(function(t){ io2.observe(t); });
+} else { rvs.forEach(function(el){ el.classList.add('in'); }); }
+setTimeout(function(){ if (!document.querySelector('.rv.in')) rvs.forEach(function(el){ el.classList.add('in'); }); }, 2500);
 
-      const target = page.dataset.target;
-      const input = radios.get(target);
-      if (!book || !flipSheet || !input || input.checked) return;
+/* Stats: đếm số khi hiện */
+var counted = false;
+function countUp(){
+  if (counted) return; counted = true;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var target = +el.dataset.count, suffix = el.dataset.suffix || '', t0 = performance.now(), dur = 1300;
+    (function tick(now){
+      var p = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * ease).toLocaleString('vi-VN') + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  });
+}
+if ('IntersectionObserver' in window) {
+  var io3 = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { countUp(); io3.disconnect(); } }); }, { threshold: .4 });
+  var stats = document.querySelector('.stats'); if (stats) io3.observe(stats);
+} else countUp();
 
-      flipping = true;
-      const direction = page.dataset.direction === 'back' ? 'back' : 'forward';
-      flipSheet.classList.toggle('back-sheet', direction === 'back');
-      flipSheet.classList.toggle('forward-sheet', direction !== 'back');
-      book.classList.add('is-flipping', direction === 'back' ? 'flipping-back' : 'flipping-forward');
+if (!reduced) {
+  /* AI transcript gõ chữ */
+  var phrases = ['“Xin chào mọi người, mình đã lên sóng!”','“Hôm nay chúng ta sẽ tìm hiểu về…”','“Nhớ bấm theo dõi để ủng hộ kênh nhé!”','“AI đang ghi lại từng lời bạn nói…”'];
+  var typing = document.getElementById('typing'), pi = 0, ci = 0, del = false;
+  (function loop(){
+    var cur = phrases[pi];
+    if (!del) { ci++; if (ci >= cur.length) { del = true; typing.textContent = cur; setTimeout(loop, 1800); return; } }
+    else { ci--; if (ci <= 0) { del = false; pi = (pi + 1) % phrases.length; } }
+    typing.textContent = cur.slice(0, ci);
+    setTimeout(loop, del ? 20 : 46);
+  })();
 
-      window.setTimeout(() => {
-        input.checked = true;
-      }, 760);
+  /* Đồng hồ ghi hình + số người xem + dung lượng chạy như thật */
+  var sec = 754, viewers = 1247, mb = 234;
+  setInterval(function(){
+    sec++;
+    var h = String(Math.floor(sec/3600)).padStart(2,'0'), m = String(Math.floor(sec%3600/60)).padStart(2,'0'), s = String(sec%60).padStart(2,'0');
+    document.getElementById('rectime').textContent = h + ':' + m + ':' + s;
+  }, 1000);
+  setInterval(function(){
+    viewers += Math.floor(Math.random()*9) - 2;
+    document.getElementById('viewers').textContent = '👥 ' + viewers.toLocaleString('vi-VN') + ' đang xem';
+  }, 2400);
+  setInterval(function(){ mb += 1; document.getElementById('recsize').textContent = mb; }, 3000);
 
-      window.setTimeout(() => {
-        book.classList.remove('is-flipping', 'flipping-forward', 'flipping-back');
-        flipSheet.classList.remove('forward-sheet', 'back-sheet');
-        flipping = false;
-      }, 960);
+  /* Mockup nghiêng 3D theo chuột */
+  var mock = document.getElementById('mockup');
+  if (matchMedia('(hover:hover)').matches) {
+    mock.addEventListener('mousemove', function(ev){
+      var r = mock.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5;
+      mock.style.transform = 'perspective(900px) rotateX(' + (-y*5).toFixed(2) + 'deg) rotateY(' + (x*7).toFixed(2) + 'deg) translateY(-4px)';
     });
-  });
+    mock.addEventListener('mouseleave', function(){ mock.style.transform = ''; });
+
+    /* Đèn rọi theo chuột */
+    var spot = document.getElementById('spotlight'), tx = innerWidth/2, ty = 200, cx = tx, cy = ty;
+    addEventListener('mousemove', function(ev){ tx = ev.clientX; ty = ev.clientY; spot.style.opacity = '1'; }, { passive: true });
+    (function follow(){ cx += (tx-cx)*.08; cy += (ty-cy)*.08; spot.style.left = cx+'px'; spot.style.top = cy+'px'; requestAnimationFrame(follow); })();
+  }
+
+  /* Tia lửa trong hero */
+  var hero = document.querySelector('.hero');
+  var colors = ['rgba(255,77,61,.85)','rgba(255,138,61,.7)','rgba(40,215,255,.55)'];
+  for (var i = 0; i < 16; i++) {
+    var e = document.createElement('span'); e.className = 'ember';
+    var sz = (2 + Math.random()*3).toFixed(1), c = colors[i % colors.length];
+    e.style.cssText = 'left:' + (4 + Math.random()*92) + '%;width:' + sz + 'px;height:' + sz + 'px;background:' + c + ';box-shadow:0 0 12px ' + c + ';animation-duration:' + (6 + Math.random()*7).toFixed(1) + 's;animation-delay:' + (Math.random()*8).toFixed(1) + 's;--dx:' + (Math.random()*70 - 35).toFixed(0) + 'px';
+    hero.appendChild(e);
+  }
+}
+
+/* Nhân đôi track marquee để chạy vòng vô tận */
+var track = document.getElementById('mtrack');
+track.innerHTML += track.innerHTML;
 })();
 </script>
-</body></html>
-
+</body>
+</html>
 

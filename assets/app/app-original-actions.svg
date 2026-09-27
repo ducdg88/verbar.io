@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560">
+  <rect width="960" height="560" rx="24" fill="#10141b"/>
+  <rect x="62" y="52" width="836" height="456" rx="22" fill="#171d27" stroke="#303848"/>
+  <text x="92" y="108" fill="#f4f7fb" font-family="Arial, sans-serif" font-size="28" font-weight="800">Thao tác nhanh</text>
+  <g fill="#ff4d3d">
+    <rect x="92" y="156" width="214" height="82" rx="20"/>
+    <rect x="332" y="156" width="214" height="82" rx="20"/>
+    <rect x="572" y="156" width="214" height="82" rx="20"/>
+  </g>
+  <g fill="#293344">
+    <rect x="92" y="268" width="214" height="82" rx="20"/>
+    <rect x="332" y="268" width="214" height="82" rx="20"/>
+    <rect x="572" y="268" width="214" height="82" rx="20"/>
+  </g>
+  <g fill="#f8fafc" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    <text x="126" y="205">Ghi âm</text><text x="366" y="205">Live</text><text x="606" y="205">Phụ đề</text>
+    <text x="126" y="317">Xuất file</text><text x="366" y="317">Tóm tắt</text><text x="606" y="317">Cài đặt</text>
+  </g>
+  <rect x="92" y="398" width="694" height="34" rx="17" fill="#0d1117"/>
+  <rect x="92" y="398" width="422" height="34" rx="17" fill="#ff4d3d"/>
+</svg>
