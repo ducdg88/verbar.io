@@ -6,6 +6,7 @@
 <title>Thanh toán Verba Studio</title>
 <link rel="icon" href="./assets/logo/verba-icon-official.svg?v=16" type="image/svg+xml">
 <meta name="theme-color" content="#0c0e13">
+<script src="https://api.affitor.com/js/affitor-tracker.js" data-affitor-program-id="1080"></script>
 <style>
 :root{--accent:#ff4d3d;--ink:#f4f5f7;--muted:#9aa0ab;--line:#23262e;--bg:#0c0e13;--panel:#11141c}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -68,6 +69,16 @@ if (sepay.bankId && sepay.accountNo && info.amount) {
 } else {
   qr.classList.add('missing');
   qr.textContent = plan === 'Business' ? 'Gói Business sẽ được báo giá riêng.' : 'Đang chờ cấu hình tài khoản SePay trên website.';
+}
+/* Affitor lead: gắn mã khách (customer_key) với lượt click giới thiệu, mỗi khách một lần */
+if (email && window.affitor && typeof window.affitor.signup === 'function') {
+  try {
+    if (localStorage.getItem('verba_affitor_lead') !== client) {
+      Promise.resolve(window.affitor.signup(client, email))
+        .then(function(){ try { localStorage.setItem('verba_affitor_lead', client); } catch (e) {} })
+        .catch(function(){});
+    }
+  } catch (e) {}
 }
 document.getElementById('zalo').href = `https://zalo.me/0963249467?text=${encodeURIComponent(`Tôi muốn thanh toán Verba Studio gói ${plan}.\nMã đơn: ${order}\nMã khách: ${client}\nEmail: ${email || 'chưa nhập'}\nSố tiền: ${info.amount ? money(info.amount) : info.label}`)}`;
 </script>
