@@ -24,19 +24,17 @@ h1{font-size:22px;line-height:1.15;margin-bottom:6px}p{color:var(--muted);font-s
 <main class="card">
   <a class="brand" href="./"><img src="./assets/logo/verba-logo-official.svg?v=16" alt="Verba Studio"></a>
   <h1>Thanh toán Verba Studio</h1>
-  <p>Quét QR SePay. Hệ thống sẽ tự nhận diện theo mã đơn.</p>
+  <p id="lead">Nâng cấp Pro ngay trong ứng dụng: Pro tự kích hoạt cho đúng tài khoản của bạn, không cần chờ xác nhận tay.</p>
   <div class="rows">
     <div class="row"><span>Gói</span><b id="plan">Pro</b></div>
     <div class="row"><span>Số tiền</span><b id="amount">199.000đ</b></div>
-    <div class="row"><span>Mã đơn</span><b id="order">---</b></div>
     <div class="row"><span>Email</span><b id="email">---</b></div>
   </div>
-  <div class="qr" id="qr"></div>
-  <p>Nội dung chuyển khoản phải giữ đúng mã đơn để SePay tự xác nhận.</p>
-  <div class="status" id="status">Đang chờ thanh toán qua SePay.</div>
+  <div class="qr missing" id="qr" style="text-align:left;line-height:1.7"></div>
+  <div class="status" id="status">Chuyển khoản QR qua SePay, tiền về là lên Pro, cộng 30 ngày.</div>
   <div class="actions">
     <a class="btn ghost" id="zalo" target="_blank" rel="noopener">Hỗ trợ Zalo</a>
-    <a class="btn" href="./?v=17">Về website</a>
+    <a class="btn" id="dl" href="https://verbar.io/#download">Tải Verba Studio</a>
   </div>
 </main>
 <script>
@@ -50,25 +48,18 @@ const plans = {
   Team: { amount: null, label: 'Theo số người' },
   Business: { amount: null, label: 'Thỏa thuận' }
 };
-const sepay = {
-  bankId: window.VERBA_SEPAY_BANK_ID || localStorage.getItem('verba_sepay_bank_id') || '',
-  accountNo: window.VERBA_SEPAY_ACCOUNT_NO || localStorage.getItem('verba_sepay_account_no') || '',
-  accountName: window.VERBA_SEPAY_ACCOUNT_NAME || localStorage.getItem('verba_sepay_account_name') || 'VERBA STUDIO'
-};
 const info = plans[plan] || plans.Pro;
-const order = `VS${client.replace(/[^A-Z0-9]/gi,'').slice(-10).toUpperCase()}${plan.slice(0,1).toUpperCase()}`;
 const money = value => Number(value || 0).toLocaleString('vi-VN') + 'đ';
 document.getElementById('plan').textContent = plan;
 document.getElementById('amount').textContent = info.amount ? money(info.amount) : info.label;
-document.getElementById('order').textContent = order;
 document.getElementById('email').textContent = email || 'Chưa có email';
 const qr = document.getElementById('qr');
-if (sepay.bankId && sepay.accountNo && info.amount) {
-  const src = `https://img.vietqr.io/image/${encodeURIComponent(sepay.bankId)}-${encodeURIComponent(sepay.accountNo)}-compact2.png?amount=${encodeURIComponent(info.amount)}&addInfo=${encodeURIComponent(order)}&accountName=${encodeURIComponent(sepay.accountName)}`;
-  qr.innerHTML = `<img src="${src}" alt="QR thanh toán SePay">`;
+if (plan === 'Pro') {
+  qr.innerHTML = '<div style="padding:16px 18px;width:100%"><b>3 bước:</b><br>1. Mở Verba Studio (chưa có thì bấm Tải Verba Studio bên dưới).<br>2. Đăng nhập bằng Google hoặc email.<br>3. Vào <b>Cài đặt</b>, mục <b>Tài khoản</b>, bấm <b>Nâng cấp Pro</b>, quét QR hiện trong app.</div>';
 } else {
-  qr.classList.add('missing');
-  qr.textContent = plan === 'Business' ? 'Gói Business sẽ được báo giá riêng.' : 'Đang chờ cấu hình tài khoản SePay trên website.';
+  qr.textContent = plan === 'Team' ? 'Gói Team dùng thử 14 ngày: tạo team ngay trong app, mục Cài đặt, Team. Cần báo giá theo số người thì nhắn Zalo.' : 'Gói ' + plan + ' được báo giá riêng. Nhắn Zalo để được tư vấn.';
+  document.getElementById('lead').textContent = 'Liên hệ để được tư vấn và báo giá.';
+  document.getElementById('status').style.display = 'none';
 }
 /* Affitor lead: gắn mã khách (customer_key) với lượt click giới thiệu, mỗi khách một lần */
 if (email && window.affitor && typeof window.affitor.signup === 'function') {
@@ -80,7 +71,7 @@ if (email && window.affitor && typeof window.affitor.signup === 'function') {
     }
   } catch (e) {}
 }
-document.getElementById('zalo').href = `https://zalo.me/0963249467?text=${encodeURIComponent(`Tôi muốn thanh toán Verba Studio gói ${plan}.\nMã đơn: ${order}\nMã khách: ${client}\nEmail: ${email || 'chưa nhập'}\nSố tiền: ${info.amount ? money(info.amount) : info.label}`)}`;
+document.getElementById('zalo').href = `https://zalo.me/0963249467?text=${encodeURIComponent(`Tôi muốn nâng cấp Verba Studio gói ${plan}.\nMã khách: ${client}\nEmail: ${email || 'chưa nhập'}\nSố tiền: ${info.amount ? money(info.amount) : info.label}`)}`;
 </script>
 </body>
 </html>
