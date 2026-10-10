@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sửa lỗi không nhận GPU NVIDIA | GPU driver troubleshooting: Verba Studio</title>
+<meta name="description" content="Verba Studio báo lỗi GPU hoặc tự chạy bằng CPU? Cách kiểm tra card NVIDIA, driver, CUDA và sửa xung đột trên Windows 10/11. Fix GPU not detected on Windows.">
+<meta property="og:title" content="Sửa lỗi không nhận GPU NVIDIA | Verba Studio">
+<meta property="og:url" content="https://verbar.io/troubleshooting/gpu-driver">
+<meta property="og:type" content="article">
+<link rel="icon" href="https://verbar.io/assets/logo/verba-icon-official.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#FF4D3D;--ink:#f4f5f7;--muted:#9aa0ab;--line:#23262e;--bg:#0c0e13;--panel:#14171f;--code:#0a0c10}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:820px;margin:0 auto;padding:40px 20px 64px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.top a.home{color:var(--ink);text-decoration:none;font-weight:700}
+.lang a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
+h1{font-size:30px;line-height:1.25;margin-bottom:6px}
+.date{color:var(--muted);font-size:14px;margin-bottom:24px}
+h2{font-size:20px;margin:34px 0 10px;scroll-margin-top:16px}
+h3{font-size:16px;margin:18px 0 6px}
+p,li{color:#d6d8dd;font-size:15.5px}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:5px 0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.toc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:18px 0}
+.toc b{display:block;margin-bottom:6px}
+.toc ol{padding-left:20px}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.code{position:relative;margin:10px 0}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 84px 14px 16px;overflow-x:auto;font-size:13.5px;line-height:1.55;color:#e8eaed}
+pre,code{font-family:Consolas,'Cascadia Mono',monospace}
+code{background:var(--code);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:13.5px}
+pre code{background:none;border:0;padding:0}
+.copy{position:absolute;top:8px;right:8px;background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:3px 10px;font:inherit;font-size:12px;cursor:pointer}
+.copy:hover{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.split{border-top:1px solid var(--line);margin:56px 0 0;padding-top:40px}
+footer{color:var(--muted);font-size:13px;margin-top:48px}
+@media (max-width:560px){h1{font-size:25px}table,thead,tbody,tr,th,td{display:block}th{display:none}td{border:none;padding:2px 0}tr{border-bottom:1px solid var(--line);padding:8px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a class="home" href="https://verbar.io/">Verba Studio</a><span class="lang"><a href="#vi">Tiếng Việt</a><a href="#en">English</a><a href="https://verbar.io/privacy">Bảo mật</a><a href="https://verbar.io/terms">Điều khoản</a></span></div>
+
+<section id="vi">
+<h1>Sửa lỗi Verba Studio không nhận GPU NVIDIA</h1>
+<p class="date">Cập nhật ngày 10/10/2026. Áp dụng cho Verba Studio trên Windows 10 và 11 khi nhận diện giọng nói bằng Whisper trên card NVIDIA.</p>
+
+<div class="box"><b>Triệu chứng:</b> app báo "GPU nhận diện lỗi, chuyển sang Whisper CPU", dòng trạng thái ghi "Không có card NVIDIA" hoặc "VRAM trống ... thiếu để tăng tốc GPU", hoặc transcript ra chậm hơn nhiều so với bình thường. Khi GPU không dùng được, app tự lùi về Whisper CPU để bạn vẫn ghi được, chỉ là chậm hơn. Làm theo các bước dưới đây để đưa GPU trở lại.</div>
+
+<nav class="toc" aria-label="Mục lục"><b>Mục lục</b>
+<ol>
+<li><a href="#vi-yeu-cau">Yêu cầu tối thiểu</a></li>
+<li><a href="#vi-kiem-tra">Bước 1: Kiểm tra máy có thấy card NVIDIA</a></li>
+<li><a href="#vi-driver">Bước 2: Cài hoặc cập nhật driver</a></li>
+<li><a href="#vi-cuda">Bước 3: Kiểm tra CUDA và biến môi trường</a></li>
+<li><a href="#vi-xung-dot">Bước 4: Sửa xung đột driver OEM và CUDA Toolkit</a></li>
+<li><a href="#vi-laptop">Laptop có hai card đồ họa</a></li>
+<li><a href="#vi-vram">VRAM không đủ</a></li>
+<li><a href="#vi-log">Xem nhật ký khi vẫn lỗi</a></li>
+</ol></nav>
+
+<h2 id="vi-yeu-cau">Yêu cầu tối thiểu</h2>
+<table>
+<thead><tr><th>Mục</th><th>Yêu cầu</th></tr></thead>
+<tbody>
+<tr><td>Card đồ họa</td><td>NVIDIA có hỗ trợ CUDA 12, VRAM từ 4 GB. App kiểm đúng ngưỡng 4 GB VRAM và 8 GB RAM; đã đo thực tế trên RTX 3060.</td></tr>
+<tr><td>Driver</td><td>Driver NVIDIA chạy được CUDA 12, tức là bản 527.41 trở lên trên Windows. Nên dùng bản mới nhất của hãng.</td></tr>
+<tr><td>CUDA Toolkit</td><td>Không bắt buộc cài riêng. Engine nhận diện dùng thư viện cuBLAS và cuDNN của CUDA 12 đi kèm, miễn driver đủ mới. Nếu máy đã cài CUDA Toolkit bản cũ (11.x) thì có thể gây xung đột, xem Bước 4.</td></tr>
+<tr><td>VRAM trống</td><td>Từ khoảng 3 GB trống để nạp model large-v3-turbo. Game, trình duyệt nhiều tab, phần mềm dựng video đang chiếm VRAM sẽ làm app lùi về CPU.</td></tr>
+</tbody>
+</table>
+
+<h2 id="vi-kiem-tra">Bước 1: Kiểm tra máy có thấy card NVIDIA</h2>
+<p>Mở PowerShell (bấm Start, gõ PowerShell, Enter) rồi chạy lệnh dưới để liệt kê card đồ họa và phiên bản driver mà Windows đang dùng:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>Get-CimInstance Win32_VideoController | Select-Object Name, DriverVersion, Status</code></pre></div>
+<ul>
+<li>Thấy dòng <code>NVIDIA GeForce ...</code> hoặc <code>NVIDIA RTX ...</code> với <code>Status</code> là <code>OK</code>: máy có card NVIDIA, sang Bước 2.</li>
+<li>Chỉ thấy <code>Microsoft Basic Display Adapter</code>: Windows chưa cài driver cho card, sang Bước 2 để cài.</li>
+<li>Chỉ thấy card Intel hoặc AMD: máy không có card NVIDIA, Verba Studio sẽ chạy Whisper CPU. Đây không phải lỗi.</li>
+</ul>
+<p>Tiếp theo kiểm tra công cụ <code>nvidia-smi</code> của NVIDIA, nó cho biết driver, mức CUDA tối đa và VRAM:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>nvidia-smi</code></pre></div>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>nvidia-smi --query-gpu=name,driver_version,memory.total,memory.free --format=csv</code></pre></div>
+<ul>
+<li>Thấy bảng có tên card, <code>Driver Version</code> và <code>CUDA Version: 12.x</code> (hoặc cao hơn): driver ổn. Nếu hiện <code>CUDA Version: 11.x</code> thì driver quá cũ, cập nhật ở Bước 2.</li>
+<li>Báo <code>nvidia-smi is not recognized</code> hoặc <code>NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver</code>: driver chưa cài đúng hoặc đang lỗi, làm Bước 2 và Bước 4.</li>
+</ul>
+
+<h2 id="vi-driver">Bước 2: Cài hoặc cập nhật driver</h2>
+<ol>
+<li>Xác định đúng dòng card ở kết quả Bước 1 (ví dụ GeForce RTX 3060).</li>
+<li>Vào trang tải driver chính thức của NVIDIA: <a href="https://www.nvidia.com/Download/index.aspx" rel="noopener">nvidia.com/Download</a>, chọn đúng dòng card và Windows 10 hoặc 11 (64-bit).</li>
+<li>Chọn loại <b>Game Ready</b> hoặc <b>Studio</b> đều được. Tải về, chạy bộ cài, chọn <b>Cài đặt tùy chỉnh</b> rồi tick <b>Thực hiện cài đặt sạch</b> (Perform a clean installation).</li>
+<li>Khởi động lại máy, chạy lại <code>nvidia-smi</code> để xác nhận <code>CUDA Version</code> từ 12.0 trở lên.</li>
+<li>Mở lại Verba Studio. Dòng trạng thái ở góc trái dưới phải hiện "Sẵn sàng chế độ tăng tốc GPU".</li>
+</ol>
+<p>Máy công ty thường bị khóa quyền cài driver. Nhờ quản trị viên IT cài driver NVIDIA bản chuẩn và gửi họ trang này.</p>
+
+<h2 id="vi-cuda">Bước 3: Kiểm tra CUDA và biến môi trường</h2>
+<p>Liệt kê các biến môi trường CUDA và các thư mục CUDA đang nằm trong PATH:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>Get-ChildItem Env: | Where-Object Name -like 'CUDA*' | Format-Table Name, Value -AutoSize
+$env:Path -split ';' | Select-String -Pattern 'CUDA|NVIDIA'</code></pre></div>
+<p>Xem máy có cài CUDA Toolkit nào và bản bao nhiêu:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>Get-ChildItem "$env:ProgramFiles\NVIDIA GPU Computing Toolkit\CUDA" -ErrorAction SilentlyContinue | Select-Object Name
+where.exe nvcc 2&gt;$null</code></pre></div>
+<p>Cách đọc kết quả:</p>
+<ul>
+<li>Không có thư mục CUDA nào: bình thường, Verba Studio dùng thư viện CUDA 12 đi kèm, không cần cài Toolkit.</li>
+<li>Chỉ có <code>v12.x</code>: phù hợp.</li>
+<li>Có <code>v11.x</code> hoặc <code>v10.x</code> nằm trước <code>v12.x</code> trong PATH: đây là nguyên nhân hay gặp nhất của lỗi lùi về CPU, sang Bước 4.</li>
+</ul>
+<p>Muốn cài CUDA Toolkit 12 thủ công (không bắt buộc) thì tải ở <a href="https://developer.nvidia.com/cuda-toolkit-archive" rel="noopener">trang CUDA Toolkit Archive</a> của NVIDIA.</p>
+
+<h2 id="vi-xung-dot">Bước 4: Sửa xung đột driver OEM và CUDA Toolkit</h2>
+<h3>Xung đột driver OEM (Dell, HP, Lenovo, ASUS...)</h3>
+<p>Máy hãng thường kèm driver NVIDIA do hãng đóng gói, hay cũ và thiếu hỗ trợ CUDA 12. Cách xử lý:</p>
+<ol>
+<li>Cài driver chuẩn của NVIDIA theo Bước 2 với tùy chọn cài đặt sạch. Hầu hết trường hợp chỉ cần vậy.</li>
+<li>Nếu bộ cài báo "driver không tương thích với phần cứng": vào trang hỗ trợ của hãng máy, tải driver NVIDIA mới nhất do hãng phát hành cho đúng model máy.</li>
+<li>Nếu driver cũ để lại lỗi, gỡ sạch bằng công cụ Display Driver Uninstaller (DDU) ở chế độ Safe Mode rồi cài lại. Chỉ làm bước này khi các cách trên không hiệu quả, và nên tạo điểm khôi phục hệ thống trước.</li>
+</ol>
+<h3>Xung đột CUDA Toolkit</h3>
+<ol>
+<li>Mở <b>Cài đặt, Ứng dụng</b>, gỡ các mục <b>NVIDIA CUDA</b> bản 11.x hoặc cũ hơn nếu bạn không cần cho phần mềm khác.</li>
+<li>Nếu phải giữ CUDA cũ cho phần mềm khác, đưa thư mục <code>bin</code> của CUDA 12 lên trước trong biến <code>Path</code> (Cài đặt hệ thống nâng cao, Biến môi trường). Kiểm tra lại bằng lệnh ở Bước 3.</li>
+<li>Khởi động lại Verba Studio sau khi đổi biến môi trường.</li>
+</ol>
+
+<h2 id="vi-laptop">Laptop có hai card đồ họa</h2>
+<p>Laptop có card Intel hoặc AMD tích hợp kèm card NVIDIA đôi khi chạy app bằng card tích hợp. Vào <b>Cài đặt Windows, Hệ thống, Màn hình, Đồ họa</b>, thêm <code>Verba Studio.exe</code> và chọn <b>Hiệu suất cao</b>. Đồng thời, trong NVIDIA Control Panel, mục <b>Manage 3D settings</b>, đặt bộ xử lý ưu tiên là <b>High-performance NVIDIA processor</b>.</p>
+
+<h2 id="vi-vram">VRAM không đủ</h2>
+<p>Dòng trạng thái "VRAM trống ... thiếu để tăng tốc GPU" nghĩa là card có nhưng đang bị phần mềm khác chiếm bộ nhớ. Kiểm tra VRAM trống:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>nvidia-smi --query-gpu=memory.used,memory.free --format=csv</code></pre></div>
+<p>Đóng game, trình duyệt có nhiều tab video, phần mềm dựng hình hoặc AI khác, rồi mở lại Verba Studio. Nếu card chỉ có 4 GB, vào Cài đặt, Ghi âm và nhận diện giọng nói, chọn model <b>small</b> cho nhẹ hơn (kém chính xác hơn large-v3-turbo).</p>
+
+<h2 id="vi-log">Xem nhật ký khi vẫn lỗi</h2>
+<p>Nhật ký máy chủ nhận diện nằm ở file <code>asr-server.log</code> trong thư mục <code>VerbaStudioUserData</code> ở gốc ổ đĩa chạy app (bản Portable thì nằm trong thư mục <code>Data</code> cạnh file .exe). Mở nhanh bằng PowerShell:</p>
+<div class="code"><button class="copy" type="button">Sao chép</button><pre><code>Get-Content "$env:SystemDrive\VerbaStudioUserData\asr-server.log" -Tail 40 -Encoding UTF8</code></pre></div>
+<p>Nếu app nằm ở ổ khác, thay <code>$env:SystemDrive</code> bằng chữ ổ đó, ví dụ <code>D:</code>. Các từ khóa hay gặp: <code>out of memory</code> (hết VRAM), <code>cublas</code> hoặc <code>cudnn</code> (thiếu hoặc xung đột thư viện CUDA), <code>no kernel image</code> (card quá cũ hoặc driver không khớp). Khi cần hỗ trợ, gửi 40 dòng cuối này kèm kết quả lệnh <code>nvidia-smi</code> cho đội hỗ trợ.</p>
+</section>
+
+<section id="en" class="split">
+<h1>Fix: Verba Studio does not detect the NVIDIA GPU</h1>
+<p class="date">Updated 10 Oct 2026. Applies to Verba Studio on Windows 10 and 11 when speech recognition runs Whisper on an NVIDIA card.</p>
+
+<div class="box"><b>Symptoms:</b> the app shows "GPU recognition failed, switching to Whisper CPU", the status line says "No NVIDIA card" or "free VRAM too low for GPU acceleration", or transcripts are much slower than usual. When the GPU is unavailable the app falls back to Whisper on CPU so you can keep recording, only slower. Follow the steps below to bring the GPU back.</div>
+
+<nav class="toc" aria-label="Table of contents"><b>Contents</b>
+<ol>
+<li><a href="#en-req">Minimum requirements</a></li>
+<li><a href="#en-check">Step 1: Check that Windows sees the NVIDIA card</a></li>
+<li><a href="#en-driver">Step 2: Install or update the driver</a></li>
+<li><a href="#en-cuda">Step 3: Check CUDA and environment variables</a></li>
+<li><a href="#en-conflict">Step 4: Fix OEM driver and CUDA Toolkit conflicts</a></li>
+<li><a href="#en-laptop">Laptops with two graphics cards</a></li>
+<li><a href="#en-vram">Not enough VRAM</a></li>
+<li><a href="#en-log">Read the log if it still fails</a></li>
+</ol></nav>
+
+<h2 id="en-req">Minimum requirements</h2>
+<table>
+<thead><tr><th>Item</th><th>Requirement</th></tr></thead>
+<tbody>
+<tr><td>Graphics card</td><td>NVIDIA with CUDA 12 support and at least 4 GB VRAM. The app checks exactly 4 GB VRAM and 8 GB RAM; measured on an RTX 3060.</td></tr>
+<tr><td>Driver</td><td>An NVIDIA driver that runs CUDA 12, which means version 527.41 or newer on Windows. The latest release is recommended.</td></tr>
+<tr><td>CUDA Toolkit</td><td>No separate install needed. The recognition engine ships its own CUDA 12 cuBLAS and cuDNN libraries as long as the driver is recent enough. An old CUDA Toolkit (11.x) on the machine can conflict, see Step 4.</td></tr>
+<tr><td>Free VRAM</td><td>About 3 GB free to load the large-v3-turbo model. Games, browsers with many tabs and video editors holding VRAM make the app fall back to CPU.</td></tr>
+</tbody>
+</table>
+
+<h2 id="en-check">Step 1: Check that Windows sees the NVIDIA card</h2>
+<p>Open PowerShell (Start, type PowerShell, Enter) and list the graphics cards and the driver version Windows uses:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>Get-CimInstance Win32_VideoController | Select-Object Name, DriverVersion, Status</code></pre></div>
+<ul>
+<li>You see <code>NVIDIA GeForce ...</code> or <code>NVIDIA RTX ...</code> with <code>Status</code> <code>OK</code>: the card is present, go to Step 2.</li>
+<li>Only <code>Microsoft Basic Display Adapter</code>: Windows has no driver for the card yet, go to Step 2 to install it.</li>
+<li>Only Intel or AMD: the machine has no NVIDIA card and Verba Studio runs Whisper on CPU. This is not a bug.</li>
+</ul>
+<p>Next, run NVIDIA's <code>nvidia-smi</code> tool, which shows the driver, the maximum CUDA level and the VRAM:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>nvidia-smi</code></pre></div>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>nvidia-smi --query-gpu=name,driver_version,memory.total,memory.free --format=csv</code></pre></div>
+<ul>
+<li>A table with the card name, <code>Driver Version</code> and <code>CUDA Version: 12.x</code> (or higher): the driver is fine. If it shows <code>CUDA Version: 11.x</code> the driver is too old, update it in Step 2.</li>
+<li><code>nvidia-smi is not recognized</code> or <code>NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver</code>: the driver is missing or broken, do Step 2 and Step 4.</li>
+</ul>
+
+<h2 id="en-driver">Step 2: Install or update the driver</h2>
+<ol>
+<li>Identify the exact card from Step 1 (for example GeForce RTX 3060).</li>
+<li>Open NVIDIA's official driver page: <a href="https://www.nvidia.com/Download/index.aspx" rel="noopener">nvidia.com/Download</a>, choose your card and Windows 10 or 11 (64-bit).</li>
+<li>Either <b>Game Ready</b> or <b>Studio</b> works. Download it, run the installer, choose <b>Custom installation</b> and tick <b>Perform a clean installation</b>.</li>
+<li>Restart the PC and run <code>nvidia-smi</code> again to confirm <code>CUDA Version</code> is 12.0 or higher.</li>
+<li>Reopen Verba Studio. The status line at the bottom left should read "Ready for GPU acceleration".</li>
+</ol>
+<p>Company PCs often block driver installs. Ask your IT administrator to install the standard NVIDIA driver and send them this page.</p>
+
+<h2 id="en-cuda">Step 3: Check CUDA and environment variables</h2>
+<p>List CUDA environment variables and the CUDA or NVIDIA folders in PATH:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>Get-ChildItem Env: | Where-Object Name -like 'CUDA*' | Format-Table Name, Value -AutoSize
+$env:Path -split ';' | Select-String -Pattern 'CUDA|NVIDIA'</code></pre></div>
+<p>See which CUDA Toolkit versions are installed:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>Get-ChildItem "$env:ProgramFiles\NVIDIA GPU Computing Toolkit\CUDA" -ErrorAction SilentlyContinue | Select-Object Name
+where.exe nvcc 2&gt;$null</code></pre></div>
+<p>How to read it:</p>
+<ul>
+<li>No CUDA folder at all: normal. Verba Studio uses its bundled CUDA 12 libraries, no Toolkit needed.</li>
+<li>Only <code>v12.x</code>: good.</li>
+<li><code>v11.x</code> or <code>v10.x</code> listed before <code>v12.x</code> in PATH: the most common cause of the CPU fallback, go to Step 4.</li>
+</ul>
+<p>To install CUDA Toolkit 12 manually (optional), use NVIDIA's <a href="https://developer.nvidia.com/cuda-toolkit-archive" rel="noopener">CUDA Toolkit Archive</a>.</p>
+
+<h2 id="en-conflict">Step 4: Fix OEM driver and CUDA Toolkit conflicts</h2>
+<h3>OEM driver conflicts (Dell, HP, Lenovo, ASUS...)</h3>
+<p>Branded PCs often ship an NVIDIA driver packaged by the vendor that is old and lacks CUDA 12 support. To fix it:</p>
+<ol>
+<li>Install the standard NVIDIA driver from Step 2 with a clean installation. This is enough in most cases.</li>
+<li>If the installer says the driver is not compatible with your hardware, download the latest NVIDIA driver published by the PC maker for your exact model from their support site.</li>
+<li>If a broken old driver is left behind, remove it with Display Driver Uninstaller (DDU) in Safe Mode and reinstall. Do this only when the steps above fail, and create a system restore point first.</li>
+</ol>
+<h3>CUDA Toolkit conflicts</h3>
+<ol>
+<li>Open <b>Settings, Apps</b> and uninstall <b>NVIDIA CUDA</b> 11.x or older if no other software needs it.</li>
+<li>If you must keep the old CUDA, move the CUDA 12 <code>bin</code> folder before it in the <code>Path</code> variable (Advanced system settings, Environment Variables). Re-run the Step 3 commands to confirm.</li>
+<li>Restart Verba Studio after changing environment variables.</li>
+</ol>
+
+<h2 id="en-laptop">Laptops with two graphics cards</h2>
+<p>Laptops with Intel or AMD integrated graphics plus an NVIDIA card sometimes run the app on the integrated one. Go to <b>Windows Settings, System, Display, Graphics</b>, add <code>Verba Studio.exe</code> and choose <b>High performance</b>. In NVIDIA Control Panel, <b>Manage 3D settings</b>, set the preferred processor to <b>High-performance NVIDIA processor</b>.</p>
+
+<h2 id="en-vram">Not enough VRAM</h2>
+<p>The status "free VRAM too low for GPU acceleration" means the card exists but other software is holding its memory. Check free VRAM:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>nvidia-smi --query-gpu=memory.used,memory.free --format=csv</code></pre></div>
+<p>Close games, browsers with many video tabs, video editors or other AI tools, then reopen Verba Studio. On a 4 GB card, open Settings, Recording and speech recognition, and pick the <b>small</b> model, which is lighter but less accurate than large-v3-turbo.</p>
+
+<h2 id="en-log">Read the log if it still fails</h2>
+<p>The recognition server log is the file <code>asr-server.log</code> inside the <code>VerbaStudioUserData</code> folder at the root of the drive where the app runs (the Portable edition keeps it in the <code>Data</code> folder next to the .exe). Open it quickly in PowerShell:</p>
+<div class="code"><button class="copy" type="button">Copy</button><pre><code>Get-Content "$env:SystemDrive\VerbaStudioUserData\asr-server.log" -Tail 40 -Encoding UTF8</code></pre></div>
+<p>If the app lives on another drive, replace <code>$env:SystemDrive</code> with that drive letter, for example <code>D:</code>. Common keywords: <code>out of memory</code> (out of VRAM), <code>cublas</code> or <code>cudnn</code> (missing or conflicting CUDA libraries), <code>no kernel image</code> (card too old or driver mismatch). When you ask for support, send these last 40 lines together with the output of <code>nvidia-smi</code>.</p>
+</section>
+
+<footer>© 2026 Verba Studio · <a href="https://verbar.io/">verbar.io</a> · <a href="https://verbar.io/privacy">Bảo mật / Privacy</a> · <a href="https://verbar.io/terms">Điều khoản / Terms</a></footer>
+</div>
+<script>
+document.querySelectorAll('.code').forEach(function(box){
+  var btn=box.querySelector('.copy'), code=box.querySelector('code');
+  if(!btn||!code) return;
+  var label=btn.textContent;
+  btn.addEventListener('click',function(){
+    var text=code.textContent;
+    var done=function(){btn.textContent='✓';setTimeout(function(){btn.textContent=label;},1500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){});}
+    else{var r=document.createRange();r.selectNodeContents(code);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  });
+});
+</script>
+</body>
+</html>
